@@ -36,6 +36,7 @@ $funcionarios = $funcionarioDAO->listar();
 				<th>Ctps</th>
 				<th>Sexo</th>
 				<th>Senha</th>
+				<th>Criado</th>
 				<th>Açoes</th>
 			</tr>
 		</thead>
@@ -55,6 +56,7 @@ $funcionarios = $funcionarioDAO->listar();
 				<td><?= $funcionario->getCtps() ?></td>
 				<td><?= $funcionario->getSexo() ?></td>
 				<td><?= $funcionario->getSenha() ?></td>
+				<td><?= $funcionario->getCreated() ?></td>
 				<td>
 					<a href="form_funcionario.php?id=<?= $funcionario->getId() ?>">Editar</a> | 
 					<a href="controle_funcionario.php?acao=deletar&id=<?= $funcionario->getId() ?>" onclick="return confirm('Deseja realmente excluir?')">Excluir</a>

@@ -19,7 +19,7 @@ class Model
         /*var_dump($sql);exit;*/
     	$stmt = $this->db->prepare($sql);
     	$stmt->execute();
-    	return $this->db->lastInsertId();
+    	return $this->db->lastInsertId();  
     }
 
     public function listar()

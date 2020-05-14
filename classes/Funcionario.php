@@ -18,6 +18,7 @@ class Funcionario
     private $ctps;
     private $sexo;
 	private $senha;
+    private $created;
 
     /**
      * @return mixed
@@ -275,6 +276,26 @@ class Funcionario
     public function setRg($rg)
     {
         $this->rg = $rg;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param mixed $created
+     *
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
 
         return $this;
     }

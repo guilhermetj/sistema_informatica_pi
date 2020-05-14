@@ -1,11 +1,11 @@
-<?php
+    <?php
 
 class Conn {
     
     public static $Host = "localhost";
     public static $User = "root";
     public static $Pass = "";
-    public static $Dbname = "trabalho_pi";
+    public static $Dbname = "sistema_informatica_pi";
     private static $Connect = null;
     
     private static function Conectar() {

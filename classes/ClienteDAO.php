@@ -15,8 +15,8 @@ class ClienteDAO extends Model
         '{$cliente->getSexo()}',
         '{$cliente->getEmail()}',
         '{$cliente->getCep()}',
-        '{$cliente->getEndereco()}'
-
+        '{$cliente->getEndereco()}',
+        NOW()
         ";
     	return $this->inserir($values);
     }

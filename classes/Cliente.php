@@ -12,6 +12,7 @@ class Cliente
     private $email;
     private $cep;
     private $endereco;
+    private $created;
 
     /**
      * @return mixed
@@ -169,6 +170,26 @@ class Cliente
     public function setEndereco($endereco)
     {
         $this->endereco = $endereco;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param mixed $created
+     *
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
 
         return $this;
     }

@@ -31,6 +31,7 @@ $clientes = $clienteDAO->listar();
 				<th>E-mail</th>
 				<th>Cep</th>
 				<th>Endereço</th>
+				<th>Criado</th>
 				<th>Ação</th>
 			</tr>
 		</thead>
@@ -45,6 +46,7 @@ $clientes = $clienteDAO->listar();
 				<td><?= $cliente->getEmail() ?></td>
 				<td><?= $cliente->getCep() ?></td>
 				<td><?= $cliente->getEndereco() ?></td>
+				<td><?= $cliente->getCreated() ?></td>
 				<td>
 					<a href="form_cliente.php?id=<?= $cliente->getId() ?>">Editar</a> | 
 					<a href="controle_cliente.php?acao=deletar&id=<?= $cliente->getId() ?>" onclick="return confirm('Deseja realmente excluir?')">Excluir</a>

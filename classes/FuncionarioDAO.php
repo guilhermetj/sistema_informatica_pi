@@ -20,7 +20,8 @@ class FuncionarioDAO extends Model
         '{$funcionario->getHistoricoEscolar()}',
         '{$funcionario->getCtps()}',
         '{$funcionario->getSexo()}',
-        '{$funcionario->getSenha()}'
+        '{$funcionario->getSenha()}',
+        NOW()
         ";
     	return $this->inserir($values);
     }
