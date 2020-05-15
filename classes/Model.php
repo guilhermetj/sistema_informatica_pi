@@ -1,5 +1,5 @@
 <?php
-require 'Conn.php';
+require_once 'Conn.php';
 class Model
 {
 
