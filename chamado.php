@@ -26,6 +26,7 @@ $chamados = $chamadoDAO->listar();
 				<th>ID</th>
 				<th>Cliente</th>
 				<th>Status</th>
+				<th>Equipamento</th>
 				<th>descricao</th>
 				<th>Abertura</th>
 				<th>Encerramento</th>
@@ -38,12 +39,13 @@ $chamados = $chamadoDAO->listar();
 				<td><?= $chamado->getId() ?></td>
 				<td><?= $chamado->getIdCliente() ?></td>
 				<td><?= $chamado->getStatus() ?></td>
+				<td><?= $chamado->getEquipamento() ?></td>
 				<td><?= $chamado->getDescricao() ?></td>
 				<td><?= $chamado->getAbertura() ?></td>
 				<td><?= $chamado->getEncerramento() ?></td>
 				<td>
 					<a href="form_chamado.php?id=<?= $chamado->getId() ?>">Editar</a> | 
-					<a href="controle_chamado.php?acao=deletar&id=<?= $chamado->getId() ?>" onclick="return confirm('Deseja realmente excluir?')">Excluir</a>
+					<a href="controle_chamado.php?acao=finalizarChamado&id=<?= $chamado->getId() ?>" onclick="return confirm('Deseja realmente Finalizar esse chamado?')">Finalizar</a>
 				</td>
 			</tr>
 			<?php } ?>

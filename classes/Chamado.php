@@ -10,6 +10,7 @@ class Chamado
 	private $descricao;
 	private $abertura;
 	private $encerramento;
+    private $equipamento;
 
     /**
      * @return mixed
@@ -132,6 +133,26 @@ class Chamado
     public function setIdCliente($id_cliente)
     {
         $this->id_cliente = $id_cliente;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEquipamento()
+    {
+        return $this->equipamento;
+    }
+
+    /**
+     * @param mixed $equipamento
+     *
+     * @return self
+     */
+    public function setEquipamento($equipamento)
+    {
+        $this->equipamento = $equipamento;
 
         return $this;
     }

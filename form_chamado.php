@@ -35,7 +35,11 @@
 			</div>
 			<div class="form-group">
 				<label for="status">Status:</label>
-				<input type="text" class="form-control" name="status" id="status" value="<?=($chamado->getStatus() != '' ? $chamado->getStatus(): '')?>" required>
+				<input type="text" class="form-control" name="status" id="status" value="<?=($chamado->getStatus() != '' ? $chamado->getStatus(): 'Ativo')?>" readonly>
+			</div>
+			<div class="form-group">
+				<label for="equipamento">Equipamento:</label>
+				<input type="text" class="form-control" name="equipamento" id="equipamento" value="<?=($chamado->getEquipamento() != '' ? $chamado->getEquipamento(): '')?>" required>
 			</div>
 			<div class="form-group">
 				<label for="descricao">Descriçao:</label>

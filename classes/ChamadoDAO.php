@@ -11,6 +11,7 @@ class ChamadoDAO extends Model
     	$values = "null, 
         '{$chamado->getIdCliente()}', 
         '{$chamado->getStatus()}',
+        '{$chamado->getEquipamento()}',
         '{$chamado->getDescricao()}',  
         NOW(),
         null
@@ -21,6 +22,7 @@ class ChamadoDAO extends Model
         $values = " 
         id_cliente = '{$chamado->getIdCliente()}', 
         status = '{$chamado->getStatus()}',
+        equipamento = '{$chamado->getEquipamento()}',
         descricao = '{$chamado->getDescricao()}'
 
         ";
