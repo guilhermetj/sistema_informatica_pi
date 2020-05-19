@@ -1,4 +1,5 @@
 <?php include './layout/header.php'; ?>
+<?php include './layout/menu.php'; ?>
 <?php 
 	require 'classes/Chamado.php'; 
 	require 'classes/Cliente.php';
