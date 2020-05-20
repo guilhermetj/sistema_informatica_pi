@@ -1,6 +1,6 @@
 <nav class="sidebar">
     <ul class="list-unstyled">
-        <li><a href="index.php"><i class="far fa-chart-bar"></i></i> Dashboard</a></li>
+        <li><a href="adm.php"><i class="far fa-chart-bar"></i></i> Dashboard</a></li>
         <li>
             <a href="#submenu4" data-toggle="collapse">
                 <i class="fas fa-headset"></i> Chamados</a>
