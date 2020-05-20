@@ -18,13 +18,12 @@
 
 
 ?>
-<div class="row">
+<div class="container">
 	<div class="col">
 		<p>&nbsp;</p>
 		<form action="controle_chamado.php?acao=<?=($chamado->getId() != '' ? 'editar' : 'cadastrar')?>" method="post">
 			<div class="form-group">
-				<label for="id">ID:</label>
-				<input type="text" class="form-control" name="id" id="id" value="<?=($chamado->getId() != '' ? $chamado->getId(): '')?>" readonly>
+				<input type="hidden" class="form-control" name="id" id="id" value="<?=($chamado->getId() != '' ? $chamado->getId(): '')?>" readonly>
 			</div>
 			<div class="form-group">
 				<label>Cliente:</label>
@@ -44,9 +43,10 @@
 			</div>
 			<div class="form-group">
 				<label for="descricao">Descriçao:</label>
-				<input type="text" class="form-control" name="descricao" id="descricao" value="<?=($chamado->getDescricao() != '' ? $chamado->getDescricao(): '')?>" required>
+				<textarea name="descricao" id="descricao" class="form-control" rows="5" required><?= ($chamado->getDescricao() != '' ? $chamado->getDescricao() : '') ?>
+				</textarea>
 			</div>
-			<div class="form-group">
+			<div class="form-group text-center">
 				<button type="submit" class="btn btn-primary">Salvar</button>
 			</div>
 		</form>

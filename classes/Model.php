@@ -16,7 +16,7 @@ class Model
     public function inserir($values)
     {
     	$sql = "INSERT INTO {$this->tabela} VALUES ($values)";
-       /* var_dump($sql);exit;*/
+        /*var_dump($sql);exit;*/
     	$stmt = $this->db->prepare($sql);
     	$stmt->execute();
     	return $this->db->lastInsertId();  
