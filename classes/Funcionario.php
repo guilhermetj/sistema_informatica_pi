@@ -9,12 +9,15 @@ class Funcionario
 	private $nome;
 	private $cpf;
     private $rg;
+    private $nascimento;
     private $email;
+    private $endereco;
     private $cep;
+    private $estado;
     private $cargo;
 	private $telefone;
 	private $tituloEleitor;
-    private $historicoEscolar;
+    private $escolaridade;
     private $ctps;
     private $sexo;
 	private $senha;
@@ -183,26 +186,6 @@ class Funcionario
     /**
      * @return mixed
      */
-    public function getHistoricoEscolar()
-    {
-        return $this->historicoEscolar;
-    }
-
-    /**
-     * @param mixed $historicoEscolar
-     *
-     * @return self
-     */
-    public function setHistoricoEscolar($historicoEscolar)
-    {
-        $this->historicoEscolar = $historicoEscolar;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getCtps()
     {
         return $this->ctps;
@@ -296,6 +279,86 @@ class Funcionario
     public function setCreated($created)
     {
         $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEscolaridade()
+    {
+        return $this->escolaridade;
+    }
+
+    /**
+     * @param mixed $escolaridade
+     *
+     * @return self
+     */
+    public function setEscolaridade($escolaridade)
+    {
+        $this->escolaridade = $escolaridade;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * @param mixed $estado
+     *
+     * @return self
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEndereco()
+    {
+        return $this->endereco;
+    }
+
+    /**
+     * @param mixed $endereco
+     *
+     * @return self
+     */
+    public function setEndereco($endereco)
+    {
+        $this->endereco = $endereco;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNascimento()
+    {
+        return $this->nascimento;
+    }
+
+    /**
+     * @param mixed $nascimento
+     *
+     * @return self
+     */
+    public function setNascimento($nascimento)
+    {
+        $this->nascimento = $nascimento;
 
         return $this;
     }

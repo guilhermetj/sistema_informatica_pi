@@ -14,7 +14,6 @@
             <ul id="submenu2" class="list-unstyled collapse">
                 <li><a href="funcionario.php"><i class="fas fa-list-alt"></i> Listar</a></li>
                 <li><a href="form_funcionario.php"><i class="fas fa-plus-circle"></i> Cadastrar</a></li>
-                <li><a href="form_funcionario.php"><i class="fas fa-key"></i> Cargos</a></li>
             </ul>
         </li>
         <li>
@@ -25,6 +24,13 @@
                 <li><a href="form_cliente.php"><i class="fas fa-plus-circle"></i> Cadastrar</a></li>
             </ul>
         </li>
-        <li><a href="#"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+        <li>
+            <a href="#submenu5" data-toggle="collapse">
+            <i class="fas fa-key fa"></i> Cargos</a>
+            <ul id="submenu5" class="list-unstyled collapse">
+                <li><a href="cargos.php"><i class="fas fa-list-alt"></i> Listar</a></li>
+                <li><a href="form_cargos.php"><i class="fas fa-plus-circle"></i> Cadastrar</a></li>
+            </ul>
+        </li>
     </ul>
 </nav>

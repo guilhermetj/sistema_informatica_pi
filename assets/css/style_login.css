@@ -1,60 +1,75 @@
-body{
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  background: #34495e;
+body {
+  font-family: "Lato", sans-serif;
 }
-.box{
-  width: 300px;
-  padding: 40px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  background: #191919;
-  text-align: center;
-  border-radius: 15px;
+
+
+
+.main-head{
+  height: 150px;
+  background: #FFF;
+ 
 }
-.box h1{
-  color: white;
-  text-transform: uppercase;
-  font-weight: 500;
+
+.sidenav {
+  height: 100%;
+  background-color: #007bff;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
-.box input[type = "email"],.box input[type = "password"]{
-  border:0;
-  background: none;
-  display: block;
-  margin: 20px auto;
-  text-align: center;
-  border: 2px solid #3498db;
-  padding: 14px 10px;
-  width: 200px;
-  outline: none;
-  color: white;
-  border-radius: 24px;
-  transition: 0.25s;
+
+
+.main {
+  padding: 0px 10px;
 }
-.box input[type = "email"]:focus,.box input[type = "password"]:focus{
-  width: 280px;
-  border-color: #2ecc71;
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
 }
-.box input[type = "submit"]{
-  border:0;
-  background: none;
-  display: block;
-  margin: 20px auto;
-  text-align: center;
-  border: 2px solid #2ecc71;
-  padding: 14px 40px;
-  outline: none;
-  color: white;
-  border-radius: 24px;
-  transition: 0.25s;
-  cursor: pointer;
+
+@media screen and (max-width: 450px) {
+  .login-form{
+      margin-top: 10%;
+  }
+
+  .register-form{
+      margin-top: 10%;
+  }
 }
-.box input[type = "submit"]:hover{
-  background: #2ecc71;
+
+@media screen and (min-width: 768px){
+  .main{
+      margin-left: 40%; 
+  }
+
+  .sidenav{
+      width: 40%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+  }
+
+  .login-form{
+      margin-top: 80%;
+  }
+
+  .register-form{
+      margin-top: 20%;
+  }
 }
-#msg{
-  color:red;
+
+
+.login-main-text{
+  margin-top: 20%;
+  padding: 60px;
+  color: #fff;
+}
+
+.login-main-text h2{
+  font-weight: 300;
+}
+
+.btn-black{
+  background-color: #000 !important;
+  color: #fff;
 }

@@ -27,7 +27,7 @@ $funcionarios = $funcionarioDAO->listar();
 				<tr>
 					<td><?= $funcionario->getId() ?></td>
 					<td><?= $funcionario->getNome() ?></td>
-					<td><?= $funcionario->getEmail() ?></td>
+					<td><?= $funcionario->getCargo() ?></td>
 					<td><?= $funcionario->getCreated() ?></td>
 					<td>
 						<a class="btn btn-warning" style="padding-right: 8px;" href="form_funcionario.php?id=<?= $funcionario->getId() ?>"><i class="far fa-edit"></i></a>

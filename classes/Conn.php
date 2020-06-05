@@ -12,7 +12,7 @@ class Conn {
         try {
             if(self::$Connect == null):
                 self::$Connect = new PDO('mysql:host=' . self::$Host .';dbname='.self::$Dbname, self::$User, self::$Pass);
-            endif;            
+            endif;           
         } catch (Exception $ex) {
             echo 'Mensagem: ' . $ex->getMessage();
             die;

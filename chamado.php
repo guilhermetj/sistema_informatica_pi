@@ -9,28 +9,26 @@ $chamados = $chamadoDAO->listar();
 <div style="width: 100%;">
 	<?php
 	if (isset($_GET['msg']) && $_GET['msg'] != '') {
-		echo '<div class="alert alert-info">' . $_GET['msg'] . '</div>';
+		echo '<div class="alert alert-info text-center">' . $_GET['msg'] . '</div>';
 	}
 	?>
 
 	<table class="table">
 		<thead>
 			<tr>
-				<th>ID</th>
-				<th>Cliente</th>
-				<th>Status</th>
-				<th>Equipamento</th>
-				<th>descricao</th>
-				<th>Abertura</th>
-				<th>Encerramento</th>
-				<th>Ações</th>
+				<th style="text-align: center">ID</th>
+				<th style="text-align: center">Status</th>
+				<th style="text-align: center">Equipamento</th>
+				<th style="text-align: center">descricao</th>
+				<th style="text-align: center">Abertura</th>
+				<th style="text-align: center">Encerramento</th>
+				<th style="text-align: center">Ações</th>
 			</tr>
 		</thead>
 		<tbody style="text-align: center;" >
 			<?php foreach ($chamados as $chamado) { ?>
 				<tr>
 					<td><?= $chamado->getId() ?></td>
-					<td><?= $chamado->getIdCliente() ?></td>
 					<td><?= $chamado->getStatus() ?></td>
 					<td><?= $chamado->getEquipamento() ?></td>
 					<td><?= $chamado->getDescricao() ?></td>

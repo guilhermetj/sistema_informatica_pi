@@ -19,7 +19,7 @@
 		<a class="sidebar-toggle text-light mr-3">
 			<span class="navbar-toggler-icon"></span>
 		</a>
-		<a class="navbar-brand" href="index.php">SoftFlow</a>
+		<a class="navbar-brand" href="adm.php">SoftFlow</a>
 
 		<div class="collapse navbar-collapse">
 			<ul class="navbar-nav ml-auto">
