@@ -59,7 +59,9 @@
 	<label>Cargo: <?php echo $funcionario->getIdCargo() ?></label><br>
 	<label>Criado em : <?php echo $funcionario->getCreated() ?></label><br>
 	</div>
-
+	<div class="container">
+		<a href="funcionario.php" class="btn btn-primary">Voltar</a>
+	</div>
 </div>
 
 <?php include './layout/footer.php'; ?> 

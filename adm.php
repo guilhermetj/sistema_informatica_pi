@@ -4,10 +4,10 @@
     <div class="content p-1">
         <div class="list-group-item">
             <div class="d-flex">
-                <div class="mr-auto p-2">
+                <div class="mr-auto p-2 "style="width: 100%;">
                 <?php
                   if (isset($_GET['msg']) && $_GET['msg'] != '') {
-                    echo '<div class="alert alert-success">' . $_GET['msg'] . '</div>';
+                    echo '<div class="alert alert-success text-center">' . $_GET['msg'] . '</div>';
                   }
                   ?>
                     <h2 class="display-4 titulo">Dashboard</h2>

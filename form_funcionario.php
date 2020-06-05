@@ -155,6 +155,7 @@
             </div>
             <br>
             <div style="text-align: center;  width: 450px;">
+                <a href="funcionario.php" class="btn btn-primary">Voltar</a>
                 <button type="submit" class="btn btn-success">Salvar</button>
             </div>
         </form>
