@@ -5,9 +5,16 @@
 	require 'classes/FuncionarioDAO.php';
     require 'classes/Estados.php'; 
     require 'classes/EstadosDAO.php';
+    require 'classes/Cargos.php';
+    require 'classes/CargosDAO.php';
+
 	$funcionario = new Funcionario();
+
     $estadosDAO = new EstadosDAO();
     $estados = $estadosDAO->listar();
+
+    $cargosDAO = new CargosDAO();
+    $cargos = $cargosDAO->listar();
 
 	
 	if(isset($_GET['id']) && $_GET['id'] != ''){
@@ -138,8 +145,12 @@
 					<input type="text" class="form-control" name="senha" id="senha" value="<?=($funcionario->getSenha() != '' ? $funcionario->getSenha(): '')?>">
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="cargo">Cargo</label>
-                    <input type="text" class="form-control" name="cargo" id="cargo" value="<?=($funcionario->getCargo() != '' ? $funcionario->getCargo(): '')?>" required>
+                    <label for="id_cargos">Cargo</label>
+                    <select class="custom-select" name="id_cargos"id="id_cargos">
+                        <?php foreach($cargos as $cargo){ ?>
+                                <option value="<?= $cargo->getID() ?>"><?= $cargo->getNome() ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
             </div>
             <br>

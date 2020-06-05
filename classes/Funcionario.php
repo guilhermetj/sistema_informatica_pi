@@ -14,13 +14,13 @@ class Funcionario
     private $endereco;
     private $cep;
     private $estado;
-    private $cargo;
 	private $telefone;
 	private $tituloEleitor;
     private $escolaridade;
     private $ctps;
     private $sexo;
 	private $senha;
+    private $id_cargo;
     private $created;
 
     /**
@@ -122,30 +122,6 @@ class Funcionario
 
         return $this;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getCargo()
-    {
-        return $this->cargo;
-    }
-
-    /**
-     * @param mixed $cargo
-     *
-     * @return self
-     */
-    public function setCargo($cargo)
-    {
-        $this->cargo = $cargo;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getTelefone()
     {
         return $this->telefone;
@@ -359,6 +335,26 @@ class Funcionario
     public function setNascimento($nascimento)
     {
         $this->nascimento = $nascimento;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdCargo()
+    {
+        return $this->id_cargo;
+    }
+
+    /**
+     * @param mixed $id_cargos
+     *
+     * @return self
+     */
+    public function setIdCargo($id_cargo)
+    {
+        $this->id_cargo = $id_cargo;
 
         return $this;
     }

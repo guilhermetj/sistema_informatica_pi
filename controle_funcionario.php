@@ -34,13 +34,13 @@ $funcionario->setEmail($_POST['email']);
 $funcionario->setEndereco($_POST['endereco']);
 $funcionario->setCep($_POST['cep']);
 $funcionario->setEstado($_POST['estado']);
-$funcionario->setCargo($_POST['cargo']);
 $funcionario->setTelefone($_POST['telefone']);
 $funcionario->setTituloEleitor($_POST['tituloEleitor']);
 $funcionario->setEscolaridade($_POST['escolaridade']);
 $funcionario->setCtps($_POST['ctps']);
 $funcionario->setSexo($_POST['sexo']);
 $funcionario->setSenha($_POST['senha']);
+$funcionario->setIdCargo($_POST['id_cargos']);
 $funcionarioDAO->insereFuncionario($funcionario);
 
 }
@@ -55,13 +55,13 @@ $funcionario->setEmail($_POST['email']);
 $funcionario->setEndereco($_POST['endereco']);
 $funcionario->setCep($_POST['cep']);
 $funcionario->setEstado($_POST['estado']);
-$funcionario->setCargo($_POST['cargo']);
 $funcionario->setTelefone($_POST['telefone']);
 $funcionario->setTituloEleitor($_POST['tituloEleitor']);
 $funcionario->setEscolaridade($_POST['escolaridade']);
 $funcionario->setCtps($_POST['ctps']);
 $funcionario->setSexo($_POST['sexo']);
 $funcionario->setSenha($_POST['senha']);
+$funcionario->setIdCargo($_POST['id_cargos']);
 $funcionarioDAO->alterafuncionario($funcionario);
 
 }

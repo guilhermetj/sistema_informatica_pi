@@ -13,22 +13,24 @@ $chamados = $chamadoDAO->listar();
 	}
 	?>
 
-	<table class="table">
+	<table class="table text-center">
 		<thead>
 			<tr>
-				<th style="text-align: center">ID</th>
-				<th style="text-align: center">Status</th>
-				<th style="text-align: center">Equipamento</th>
-				<th style="text-align: center">descricao</th>
-				<th style="text-align: center">Abertura</th>
-				<th style="text-align: center">Encerramento</th>
-				<th style="text-align: center">Ações</th>
+				<th>ID</th>
+				<th>Cliente</th>
+				<th>Status</th>
+				<th>Equipamento</th>
+				<th>descricao</th>
+				<th>Abertura</th>
+				<th>Encerramento</th>
+				<th>Ações</th>
 			</tr>
 		</thead>
-		<tbody style="text-align: center;" >
+		<tbody>
 			<?php foreach ($chamados as $chamado) { ?>
 				<tr>
 					<td><?= $chamado->getId() ?></td>
+					<td><?= $chamado->getIdCliente() ?></td>
 					<td><?= $chamado->getStatus() ?></td>
 					<td><?= $chamado->getEquipamento() ?></td>
 					<td><?= $chamado->getDescricao() ?></td>

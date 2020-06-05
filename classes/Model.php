@@ -29,6 +29,7 @@ class Model
     	$stmt->setFetchMode(PDO::FETCH_CLASS, $this->class);
     	$stmt->execute();
     	return $stmt->fetchAll();
+        /*var_dump($stmt);exit;*/
     }
 
     public function get($id)

@@ -1,5 +1,5 @@
 <?php
-require 'Model.php';
+require_once 'Model.php';
 class CargosDAO extends Model
 {   
     public function __construct() {

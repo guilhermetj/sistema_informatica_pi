@@ -17,13 +17,13 @@ class FuncionarioDAO extends Model
         '{$funcionario->getEndereco()}',
         '{$funcionario->getCep()}',
         '{$funcionario->getEstado()}',
-        '{$funcionario->getCargo()}',
         '{$funcionario->getTelefone()}',
         '{$funcionario->getTituloEleitor()}',
         '{$funcionario->getEscolaridade()}',
         '{$funcionario->getCtps()}',
         '{$funcionario->getSexo()}',
         '{$funcionario->getSenha()}',
+        '{$funcionario->getIdCargo()}',
         NOW()
         ";
     	return $this->inserir($values);
@@ -42,13 +42,13 @@ class FuncionarioDAO extends Model
         endereco= '{$funcionario->getEndereco()}',
         cep ='{$funcionario->getCep()}',
         estado ='{$funcionario->getEstado()}',
-        cargo ='{$funcionario->getCargo()}',
         telefone ='{$funcionario->getTelefone()}',
         tituloEleitor = '{$funcionario->getTituloEleitor()}',
         escolaridade ='{$funcionario->getEscolaridade()}',
         ctps ='{$funcionario->getCtps()}',
         sexo ='{$funcionario->getSexo()}',
-        senha ='{$funcionario->getSenha()}'
+        senha ='{$funcionario->getSenha()}',
+        id_cargo ='{$funcionario->getIdCargo()}'
         ";
     	$this->alterar($funcionario->getId(), $values);
     } 
