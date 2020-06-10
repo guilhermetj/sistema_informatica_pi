@@ -5,7 +5,9 @@
             <a href="#submenu4" data-toggle="collapse">
                 <i class="fas fa-headset"></i> Chamados</a>
             <ul id="submenu4" class="list-unstyled collapse">
-                <li><a href="chamado.php"><i class="fas fa-list-alt"></i> Listar</a></li>
+                <li><a href="chamado.php"><i class="fas fa-list-alt"></i> Em Espera</a></li>
+                <li><a href="chamado.php"><i class="fas fa-list-alt"></i> Em Andamento</a></li>
+                <li><a href="chamado.php"><i class="fas fa-list-alt"></i> Finalizados</a></li>
                 <li><a href="form_chamado.php"><i class="fas fa-plus-circle"></i> Cadastrar</a></li>
             </ul>
         </li>

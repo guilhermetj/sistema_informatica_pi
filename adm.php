@@ -1,6 +1,17 @@
 <?php include './layout/header.php'; ?>
 <?php include './layout/menu.php'; ?>
 
+<?php 
+include 'classes/RelatorioDAO.php';
+$relatorioDAO = new RelatorioDAO();
+$total_cliente = $relatorioDAO->contar('cliente');
+$total_funcionario = $relatorioDAO->contar('funcionario');
+$total_chamado_finalizado = $relatorioDAO->contar('chamado', "status = 'Finalizado'");
+$total_chamado_iniciado = $relatorioDAO->contar('chamado', "status = 'Iniciado'");
+/*var_dump($total_chamado_finalizado);exit;*/
+ ?>
+
+
     <div class="content p-1">
         <div class="list-group-item">
             <div class="d-flex">
@@ -20,7 +31,7 @@
                             <div class="card-body">
                                 <i class="fas fa-users fa-3x"></i>
                                 <h6 class="card-title">Clientes</h6>
-                                <h2 class="lead cliente"><?= $total_cliente['cliente'] ?? 0; ?></h2>
+                                <h2 class="lead cliente"><?= $total_cliente['total'] ?? 0; ?></h2>
                             </div>
                         </div>
                     </a>
@@ -30,8 +41,8 @@
                         <div class="card bg-primary text-white">
                             <div class="card-body">
                                 <i class="fas fa-headset fa-3x"></i>
-                                <h6 class="card-title">Chamados em andamento</h6>
-                                <h2 class="lead chamado"><?= $total_chamado['chamado'] ?? 0; ?></h2>
+                                <h6 class="card-title">Em andamento</h6>
+                                <h2 class="lead chamado"><?= $total_chamado_iniciado['total'] ?? 0; ?></h2>
                             </div>
                         </div>
                     </a>
@@ -41,8 +52,8 @@
                         <div class="card bg-danger text-white">
                             <div class="card-body">
                                 <i class="fas fa-headset fa-3x"></i>
-                                <h6 class="card-title">Chamados Finalizados</h6>
-                                <h2 class="lead chamado"><?= $total_chamado['chamado'] ?? 0; ?></h2>
+                                <h6 class="card-title">Finalizados</h6>
+                                <h2 class="lead chamado"><?= $total_chamado_finalizado['total'] ?? 0; ?></h2>
                             </div>
                         </div>
                     </a>
@@ -53,7 +64,7 @@
                             <div class="card-body">
                                 <i class="fas fa-address-card fa-3x"></i> 
                                 <h6 class="card-title">Funcionarios</h6>
-                                <h2 class="lead funcionario"><?= $total_funcionario['funcionario'] ?? 0; ?></h2>
+                                <h2 class="lead funcionario"><?= $total_funcionario['total'] ?? 0; ?></h2>
                             </div>
                         </div>
                     </a>
