@@ -57,7 +57,7 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
                 <div class="form-group col-md-3" style="padding-right: 5px;">
                     <label for="status">Status</label>
                     <input type="text" id="status" name="status" class="form-control" 
-                    value="<?=($chamado->getStatus() != '' ? $chamado->getStatus(): 'Iniciado')?>" readonly>
+                    value="<?=($chamado->getStatus() != '' ? $chamado->getStatus(): 'Em espera')?>" readonly>
                 </div>
                 <div class="form-group col-md-5">
                     <label for="equipamento">Equipamento</label>

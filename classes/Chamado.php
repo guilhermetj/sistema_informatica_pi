@@ -6,6 +6,7 @@ class Chamado
 {
 	private $id;
 	private $id_cliente;
+    private $funcionario;
 	private $status;
 	private $descricao;
 	private $abertura;
@@ -153,6 +154,26 @@ class Chamado
     public function setEquipamento($equipamento)
     {
         $this->equipamento = $equipamento;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFuncionario()
+    {
+        return $this->funcionario;
+    }
+
+    /**
+     * @param mixed $funcionario
+     *
+     * @return self
+     */
+    public function setFuncionario($funcionario)
+    {
+        $this->funcionario = $funcionario;
 
         return $this;
     }
