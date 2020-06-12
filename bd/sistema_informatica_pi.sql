@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05-Jun-2020 às 04:47
+-- Tempo de geração: 13-Jun-2020 às 01:09
 -- Versão do servidor: 10.4.11-MariaDB
 -- versão do PHP: 7.4.6
 
@@ -41,8 +41,8 @@ CREATE TABLE `cargos` (
 --
 
 INSERT INTO `cargos` (`id`, `nome`, `ler`, `editar`, `cadastrar`, `excluir`) VALUES
-(6, 'admin', 1, 1, 1, 1),
-(7, 'Funcionário', 1, 1, 1, 0);
+(8, 'Admin', 1, 1, 1, 1),
+(9, 'Funcionario', 1, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -53,6 +53,7 @@ INSERT INTO `cargos` (`id`, `nome`, `ler`, `editar`, `cadastrar`, `excluir`) VAL
 CREATE TABLE `chamado` (
   `id` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
+  `id_funcionario` int(11) DEFAULT NULL,
   `status` varchar(155) NOT NULL,
   `equipamento` varchar(115) NOT NULL,
   `descricao` varchar(155) NOT NULL,
@@ -64,12 +65,16 @@ CREATE TABLE `chamado` (
 -- Extraindo dados da tabela `chamado`
 --
 
-INSERT INTO `chamado` (`id`, `id_cliente`, `status`, `equipamento`, `descricao`, `abertura`, `encerramento`) VALUES
-(4, 7, 'Finalizado', '', 'teste365', '2020-05-15 16:35:24', '2020-05-30 17:11:02'),
-(5, 10, 'Finalizado', '', 'bthth', '2020-05-15 16:41:26', '2020-05-30 17:10:59'),
-(6, 6, 'Finalizado', 'computador', 'computador nao liga', '2020-05-30 17:10:40', '2020-05-30 17:10:52'),
-(7, 6, '', '', 'Não liga				                                                                ', '2020-05-30 17:19:20', '2020-06-04 19:41:58'),
-(8, 6, 'Finalizado', 'dwadawd', '111           ', '2020-06-04 19:54:52', '2020-06-04 19:55:48');
+INSERT INTO `chamado` (`id`, `id_cliente`, `id_funcionario`, `status`, `equipamento`, `descricao`, `abertura`, `encerramento`) VALUES
+(28, 6, 20, 'Finalizado', 'dawdawdaw', '1231321 ', '2020-06-11 16:27:00', '2020-06-12 14:09:16'),
+(31, 6, 20, 'Em andamento', 'dawdawdaw', '                21', '2020-06-12 13:03:21', NULL),
+(34, 9, 20, 'Em andamento', 'dwadawd', '123123 ', '2020-06-12 13:37:34', NULL),
+(35, 6, 20, 'Em andamento', 'computador', ' 3213123', '2020-06-12 13:44:09', NULL),
+(36, 6, 20, 'Em andamento', 'computador', '                3213123', '2020-06-12 13:44:23', NULL),
+(37, 6, 21, 'Finalizado', 'teste', 'teste                ', '2020-06-12 13:51:45', '2020-06-12 13:55:43'),
+(38, 6, 21, 'Finalizado', 'teste', 'teste                ', '2020-06-12 14:00:18', '2020-06-12 14:00:34'),
+(39, 6, 21, 'Finalizado', 'teste', 'teste                ', '2020-06-12 14:02:25', '2020-06-12 14:02:36'),
+(40, 6, 21, 'Em andamento', 'teste', '213132                ', '2020-06-12 14:07:57', NULL);
 
 -- --------------------------------------------------------
 
@@ -97,7 +102,8 @@ INSERT INTO `cliente` (`id`, `nome`, `cpf`, `telefone`, `sexo`, `email`, `cep`, 
 (6, 'Guilherme', 534456, 231321, 'wadwa', 'dwaD@aswd', 231, 'teste dwadwad dw dwa', NULL),
 (7, 'dawdaw', 312321, 3213, 'dwad', 'ddawdwa@Dwad', 1231, 'ewae12321546', NULL),
 (9, 'dawdw', 321321, 3213, 'Masculino', 'lucas@email.com', 213, 'ewae12321546', '2020-05-14 17:46:21'),
-(10, 'dawdw', 321321, 3213, 'Masculino', 'lucas@email.com', 213, 'ewae12321546', '2020-05-14 17:47:27');
+(10, 'dawdw', 321321, 3213, 'Masculino', 'lucas@email.com', 213, 'ewae12321546', '2020-05-14 17:47:27'),
+(15, 'Cleiton', 11111111, 211111111, 'Masculino', '1111111111', 1111111, '11111111111', '2020-06-05 20:55:52');
 
 -- --------------------------------------------------------
 
@@ -160,13 +166,13 @@ CREATE TABLE `funcionario` (
   `endereco` varchar(150) NOT NULL,
   `cep` int(50) NOT NULL,
   `estado` varchar(50) NOT NULL,
-  `cargo` varchar(115) NOT NULL,
   `telefone` int(10) NOT NULL,
   `tituloEleitor` varchar(115) NOT NULL,
   `escolaridade` varchar(115) NOT NULL,
   `ctps` varchar(115) NOT NULL,
   `sexo` varchar(30) NOT NULL,
   `senha` varchar(115) NOT NULL,
+  `id_cargo` int(11) NOT NULL,
   `created` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -174,8 +180,9 @@ CREATE TABLE `funcionario` (
 -- Extraindo dados da tabela `funcionario`
 --
 
-INSERT INTO `funcionario` (`id`, `nome`, `cpf`, `rg`, `nascimento`, `email`, `endereco`, `cep`, `estado`, `cargo`, `telefone`, `tituloEleitor`, `escolaridade`, `ctps`, `sexo`, `senha`, `created`) VALUES
-(15, 'admin', '1111111111111', 111111, '1985-05-01', 'admin@admin', 'funciona porfavor', 1111111, 'Distrito Federal', 'admin', 619999999, '1684896525', 'SuperiorIncompleto', '5555', 'Masculino', 'admin', '2020-06-04 20:28:57');
+INSERT INTO `funcionario` (`id`, `nome`, `cpf`, `rg`, `nascimento`, `email`, `endereco`, `cep`, `estado`, `telefone`, `tituloEleitor`, `escolaridade`, `ctps`, `sexo`, `senha`, `id_cargo`, `created`) VALUES
+(20, 'cleiton', '1111111111', 111111111, '1256-12-05', 'cleiton@email.com', 'dwadw11d21', 111111, 'Espírito Santo', 211111221, '21313', 'MedioIncompleto', '2131231', 'Masculino', '1234', 8, '2020-06-11 15:47:47'),
+(21, 'Gisele', '11111111111111', 2147483647, '1188-12-15', 'gisele@email.com', '111111111111', 2147483647, 'Mato Grosso do Sul', 2147483647, '111111111111', 'MedioIncompleto', '11111111111111', 'Masculino', '1234', 9, '2020-06-12 13:51:26');
 
 -- --------------------------------------------------------
 
@@ -9931,7 +9938,8 @@ ALTER TABLE `cargos`
 --
 ALTER TABLE `chamado`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_cliente_fk` (`id_cliente`);
+  ADD KEY `id_cliente_fk` (`id_cliente`),
+  ADD KEY `id_funcionario_fk` (`id_funcionario`) USING BTREE;
 
 --
 -- Índices para tabela `cliente`
@@ -9949,7 +9957,8 @@ ALTER TABLE `estados`
 -- Índices para tabela `funcionario`
 --
 ALTER TABLE `funcionario`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_cargo` (`id_cargo`) USING BTREE;
 
 --
 -- Índices para tabela `tb_cidades`
@@ -9966,19 +9975,19 @@ ALTER TABLE `tb_cidades`
 -- AUTO_INCREMENT de tabela `cargos`
 --
 ALTER TABLE `cargos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `chamado`
 --
 ALTER TABLE `chamado`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `estados`
@@ -9990,7 +9999,7 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de tabela `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de tabela `tb_cidades`
@@ -10006,7 +10015,14 @@ ALTER TABLE `tb_cidades`
 -- Limitadores para a tabela `chamado`
 --
 ALTER TABLE `chamado`
-  ADD CONSTRAINT `id_cliente_fk` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `id_cliente_fk` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `id_funcionario_fk` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Limitadores para a tabela `funcionario`
+--
+ALTER TABLE `funcionario`
+  ADD CONSTRAINT `id_cargo_fk` FOREIGN KEY (`id_cargo`) REFERENCES `cargos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
