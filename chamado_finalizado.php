@@ -4,7 +4,8 @@
 require 'classes/Chamado.php';
 require 'classes/ChamadoDAO.php';
 $chamadoDAO = new ChamadoDAO();
-$chamados = $chamadoDAO->listarEspera();
+$funcionario = $_SESSION['id_funcionario'];
+$chamados = $chamadoDAO->listarFinalizado($funcionario);
 ?>
 <div style="width: 100%;">
 	<?php
@@ -16,27 +17,23 @@ $chamados = $chamadoDAO->listarEspera();
 	<table class="table text-center">
 		<thead>
 			<tr>
-				<th>ID</th>
 				<th>Cliente</th>
 				<th>Status</th>
 				<th>Equipamento</th>
-				<th>descricao</th>
-				<th>Abertura</th>
-				<th>Ações</th>
+				<th>Finalizado</th>
+				<th>Visualizar</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php foreach ($chamados as $chamado) { ?>
 				<tr>
-					<td><?= $chamado->getId() ?></td>
 					<td><?= $chamado->getIdCliente() ?></td>
 					<td><?= $chamado->getStatus() ?></td>
 					<td><?= $chamado->getEquipamento() ?></td>
-					<td><?= $chamado->getDescricao() ?></td>
-					<td><?= $chamado->getAbertura() ?></td>
+					<td><?= $chamado->getEncerramento() ?></td>
 					<td>
-						<a class="btn btn-warning" style="padding-right: 8px;" href="form_chamado.php?id=<?= $chamado->getId() ?>"><i class="far fa-edit"></i></a>
-						<a class="btn btn-danger" href="controle_chamado.php?acao=finalizarChamado&id=<?= $chamado->getId() ?>" onclick="return confirm('Deseja realmente Finalizar esse chamado?')"><i class="far fa-check-square"></i></a>
+					<a class="btn btn-primary" href="visualizar_chamado.php?id=<?= $chamado->getId() ?>"><i class="fa fa-eye"></i></a>
 					</td>
 				</tr>
 			<?php } ?>

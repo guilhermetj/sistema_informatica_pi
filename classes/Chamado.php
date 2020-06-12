@@ -6,7 +6,7 @@ class Chamado
 {
 	private $id;
 	private $id_cliente;
-    private $funcionario;
+    private $id_funcionario;
 	private $status;
 	private $descricao;
 	private $abertura;
@@ -158,22 +158,23 @@ class Chamado
         return $this;
     }
 
+
     /**
      * @return mixed
      */
-    public function getFuncionario()
+    public function getIdFuncionario()
     {
-        return $this->funcionario;
+        return $this->id_funcionario;
     }
 
     /**
-     * @param mixed $funcionario
+     * @param mixed $id_funcionario
      *
      * @return self
      */
-    public function setFuncionario($funcionario)
+    public function setIdFuncionario($id_funcionario)
     {
-        $this->funcionario = $funcionario;
+        $this->id_funcionario = $id_funcionario;
 
         return $this;
     }

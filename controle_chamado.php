@@ -26,7 +26,7 @@ if ($acao == 'deletar') {
 } else if ($acao == 'finalizarChamado'){
 	finalizarChamado($chamadoDAO, $id);
 	$msg = 'Finalizado com Sucesso';
-	header("Location: chamado_espera.php?msg=$msg");
+	header("Location: chamado_finalizado.php?msg=$msg");
 } else if ($acao == 'aceitarChamado'){
 	aceitarChamado($chamadoDAO, $chamado, $id);
 	$msg = 'Aceito com Sucesso';
@@ -63,7 +63,7 @@ $chamadoDAO->alterar($id, $values);
 function aceitarChamado($chamadoDAO, $chamado, $id){
 
 $chamado->setId($_POST['id']);
-$chamado->setFuncionario($_POST['funcionario']);
+$chamado->setIdFuncionario($_POST['id_funcionario']);
 $chamado->setStatus($_POST['status']);
 $chamadoDAO->aceitarChamado($chamado);
 }

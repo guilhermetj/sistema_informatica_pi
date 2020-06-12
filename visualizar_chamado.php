@@ -11,7 +11,8 @@
 		$chamadoDAO = new ChamadoDAO();
 		$chamado = $chamadoDAO->get($id);
 	}
-	$nome = $_SESSION['nome'];
+
+	$id = $_SESSION['id_funcionario'];
 ?>
 
 <style>
@@ -44,7 +45,7 @@
 	<div class="container">
 		<form action="controle_chamado.php?acao=aceitarChamado" method="post">
 			<input type="hidden" name="id" id="id" value="<?=$chamado->getId()?>">
-			<input type="hidden" name="funcionario" id="funcionario" value="<? echo $nome ?>">
+			<input type="hidden" name="id_funcionario" id="id_funcionario" value="<?php echo $id ?>">
 			<input type="hidden" name="status" id="status" value="Em andamento">
 			<button type="submit" class="btn btn-success" onclick="return confirm('Deseja aceitar esse chamado?')">Aceitar</button>	
 			<a href="chamado_espera.php" class="btn btn-primary">Voltar</a>

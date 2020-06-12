@@ -4,7 +4,7 @@
 require 'classes/Chamado.php';
 require 'classes/ChamadoDAO.php';
 $chamadoDAO = new ChamadoDAO();
-$funcionario = $_SESSION['nome'];
+$funcionario = $_SESSION['id_funcionario'];
 $chamados = $chamadoDAO->listarAndamento($funcionario);
 ?>
 <div style="width: 100%;">
@@ -30,7 +30,7 @@ $chamados = $chamadoDAO->listarAndamento($funcionario);
 			<?php foreach ($chamados as $chamado) { ?>
 				<tr>
 					<td><?= $chamado->getIdCliente() ?></td>
-					<td><?= $chamado->getFuncionario() ?></td>
+					<td><?= $chamado->getIdFuncionario() ?></td>
 					<td><?= $chamado->getStatus() ?></td>
 					<td><?= $chamado->getEquipamento() ?></td>
 					<td><?= $chamado->getDescricao() ?></td>

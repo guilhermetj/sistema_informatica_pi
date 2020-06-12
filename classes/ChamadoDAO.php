@@ -10,7 +10,7 @@ class ChamadoDAO extends Model
     public function insereChamado(Chamado $chamado){
     	$values = "null, 
         '{$chamado->getIdCliente()}',
-        'null',  
+        null,  
         '{$chamado->getStatus()}',
         '{$chamado->getEquipamento()}',
         '{$chamado->getDescricao()}',  
@@ -32,7 +32,7 @@ class ChamadoDAO extends Model
     public function aceitarChamado(Chamado $chamado){
         $values = "  
         status = '{$chamado->getStatus()}',
-        funcionario = '{$chamado->getFuncionario()}'
+        id_funcionario = '{$chamado->getIdFuncionario()}'
 
         ";
         return $this->alterar($chamado->getId(), $values);
@@ -48,11 +48,21 @@ class ChamadoDAO extends Model
     }
     public function listarAndamento($funcionario)
     {
-        $sql = "SELECT * FROM {$this->tabela} WHERE funcionario = '{$funcionario}'";
+        $sql = "SELECT * FROM {$this->tabela} WHERE id_funcionario = '{$funcionario}' AND status='Em andamento'";
         /*var_dump($sql);exit;*/
         $stmt = $this->db->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_CLASS, $this->class);
         $stmt->execute();
+        return $stmt->fetchAll();
+        /*var_dump($stmt);exit;*/
+    }
+    public function listarFinalizado($funcionario)
+    {
+        $sql = "SELECT * FROM {$this->tabela} WHERE id_funcionario = '{$funcionario}' AND status='Finalizado'";
+        $stmt = $this->db->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, $this->class);
+        $stmt->execute();
+        /*var_dump($stmt);exit;*/
         return $stmt->fetchAll();
         /*var_dump($stmt);exit;*/
     }
