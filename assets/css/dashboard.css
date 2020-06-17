@@ -5,7 +5,7 @@ body {
     color: #FFF !important;
 }
 .sidebar{
-    background-color: #222c3c;
+    background-color:   #000000;
     min-width: 250px;
     max-width: 250px;
     min-height: calc(100vh - 56px);
@@ -62,5 +62,5 @@ body {
     font-size: 2.0rem !important;
 }
 #navbar{
-    background-color: #F4A460; 
+    background-color:   #000000; 
 }

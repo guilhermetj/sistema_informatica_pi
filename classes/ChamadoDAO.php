@@ -48,13 +48,15 @@ class ChamadoDAO extends Model
     }
     public function listarAndamento($funcionario)
     {
-        $sql = "SELECT * FROM {$this->tabela} WHERE id_funcionario = '{$funcionario}' AND status='Em andamento'";
+        $sql = "SELECT ch.*, cl.nome AS nome_cliente, fn.nome AS nome_funcionario FROM {$this->tabela} ch 
+        LEFT JOIN cliente cl ON cl.id = ch.id_cliente
+        LEFT JOIN funcionario fn ON fn.id = ch.id_funcionario
+        WHERE id_funcionario = '{$funcionario}' AND status='Em andamento'";
         /*var_dump($sql);exit;*/
         $stmt = $this->db->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_CLASS, $this->class);
         $stmt->execute();
         return $stmt->fetchAll();
-        /*var_dump($stmt);exit;*/
     }
     public function listarFinalizado($funcionario)
     {
@@ -65,5 +67,16 @@ class ChamadoDAO extends Model
         /*var_dump($stmt);exit;*/
         return $stmt->fetchAll();
         /*var_dump($stmt);exit;*/
+    }
+    public function getChamado($id)
+    {
+        $sql = "SELECT ch.*, cl.nome AS nome_cliente FROM {$this->tabela} ch 
+        LEFT JOIN cliente cl ON cl.id = ch.id_cliente
+        WHERE ch.id = {$id}";
+        /*var_dump($sql);exit;*/
+        $stmt = $this->db->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, $this->class);
+        $stmt->execute();
+        return $stmt->fetch();
     }
 }

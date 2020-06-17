@@ -29,8 +29,8 @@ $chamados = $chamadoDAO->listarAndamento($funcionario);
 		<tbody>
 			<?php foreach ($chamados as $chamado) { ?>
 				<tr>
-					<td><?= $chamado->getIdCliente() ?></td>
-					<td><?= $chamado->getIdFuncionario() ?></td>
+					<td><?= $chamado->nome_cliente; ?></td>
+					<td><?= $chamado->nome_funcionario; ?></td>
 					<td><?= $chamado->getStatus() ?></td>
 					<td><?= $chamado->getEquipamento() ?></td>
 					<td><?= $chamado->getDescricao() ?></td>

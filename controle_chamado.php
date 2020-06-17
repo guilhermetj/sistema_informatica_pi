@@ -22,7 +22,7 @@ if ($acao == 'deletar') {
 } else if ($acao == 'editar'){
 	editar($chamadoDAO, $chamado, $id);
 	$msg = 'Editado com Sucesso';
-	header("Location: chamado_espera.php?msg=$msg");
+	header("Location: chamado_andamento.php?msg=$msg");
 } else if ($acao == 'finalizarChamado'){
 	finalizarChamado($chamadoDAO, $id);
 	$msg = 'Finalizado com Sucesso';
