@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13-Jun-2020 às 01:09
+-- Tempo de geração: 26-Jun-2020 às 22:30
 -- Versão do servidor: 10.4.11-MariaDB
 -- versão do PHP: 7.4.6
 
@@ -29,20 +29,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cargos` (
   `id` int(11) NOT NULL,
-  `nome` varchar(50) NOT NULL,
-  `ler` int(5) NOT NULL,
-  `editar` int(5) NOT NULL,
-  `cadastrar` int(5) NOT NULL,
-  `excluir` int(5) NOT NULL
+  `nome` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `cargos`
 --
 
-INSERT INTO `cargos` (`id`, `nome`, `ler`, `editar`, `cadastrar`, `excluir`) VALUES
-(8, 'Admin', 1, 1, 1, 1),
-(9, 'Funcionario', 1, 1, 1, 0);
+INSERT INTO `cargos` (`id`, `nome`) VALUES
+(8, 'Admin'),
+(9, 'Funcionario');
 
 -- --------------------------------------------------------
 
@@ -67,14 +63,15 @@ CREATE TABLE `chamado` (
 
 INSERT INTO `chamado` (`id`, `id_cliente`, `id_funcionario`, `status`, `equipamento`, `descricao`, `abertura`, `encerramento`) VALUES
 (28, 6, 20, 'Finalizado', 'dawdawdaw', '1231321 ', '2020-06-11 16:27:00', '2020-06-12 14:09:16'),
-(31, 6, 20, 'Em andamento', 'dawdawdaw', '                21', '2020-06-12 13:03:21', NULL),
+(31, 6, 20, 'Finalizado', 'dawdawdaw', '21                ', '2020-06-12 13:03:21', '2020-06-12 21:21:08'),
 (34, 9, 20, 'Em andamento', 'dwadawd', '123123 ', '2020-06-12 13:37:34', NULL),
-(35, 6, 20, 'Em andamento', 'computador', ' 3213123', '2020-06-12 13:44:09', NULL),
-(36, 6, 20, 'Em andamento', 'computador', '                3213123', '2020-06-12 13:44:23', NULL),
+(35, 6, 20, 'Em andamento', 'computador', 'teste               ', '2020-06-12 13:44:09', NULL),
+(36, 6, 20, 'Em andamento', 'computador', 'teste        ', '2020-06-12 13:44:23', NULL),
 (37, 6, 21, 'Finalizado', 'teste', 'teste                ', '2020-06-12 13:51:45', '2020-06-12 13:55:43'),
 (38, 6, 21, 'Finalizado', 'teste', 'teste                ', '2020-06-12 14:00:18', '2020-06-12 14:00:34'),
 (39, 6, 21, 'Finalizado', 'teste', 'teste                ', '2020-06-12 14:02:25', '2020-06-12 14:02:36'),
-(40, 6, 21, 'Em andamento', 'teste', '213132                ', '2020-06-12 14:07:57', NULL);
+(40, 6, 21, 'Em andamento', 'teste', '213132                ', '2020-06-12 14:07:57', NULL),
+(41, 6, 20, 'Em andamento', 'computador', 'o computador não liga            ', '2020-06-12 21:13:34', NULL);
 
 -- --------------------------------------------------------
 
@@ -99,11 +96,12 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id`, `nome`, `cpf`, `telefone`, `sexo`, `email`, `cep`, `endereco`, `created`) VALUES
-(6, 'Guilherme', 534456, 231321, 'wadwa', 'dwaD@aswd', 231, 'teste dwadwad dw dwa', NULL),
+(6, 'Guilherme', 534456, 231321, '', 'dwaD@aswd', 231, 'teste dwadwad dw dwa', NULL),
 (7, 'dawdaw', 312321, 3213, 'dwad', 'ddawdwa@Dwad', 1231, 'ewae12321546', NULL),
 (9, 'dawdw', 321321, 3213, 'Masculino', 'lucas@email.com', 213, 'ewae12321546', '2020-05-14 17:46:21'),
 (10, 'dawdw', 321321, 3213, 'Masculino', 'lucas@email.com', 213, 'ewae12321546', '2020-05-14 17:47:27'),
-(15, 'Cleiton', 11111111, 211111111, 'Masculino', '1111111111', 1111111, '11111111111', '2020-06-05 20:55:52');
+(15, 'Cleiton', 11111111, 211111111, 'Masculino', '1111111111', 1111111, '11111111111', '2020-06-05 20:55:52'),
+(16, 'joao', 111111111, 123244354, 'Masculino', 'teste@teste', 111111111, '111111111111', '2020-06-23 14:28:28');
 
 -- --------------------------------------------------------
 
@@ -182,7 +180,9 @@ CREATE TABLE `funcionario` (
 
 INSERT INTO `funcionario` (`id`, `nome`, `cpf`, `rg`, `nascimento`, `email`, `endereco`, `cep`, `estado`, `telefone`, `tituloEleitor`, `escolaridade`, `ctps`, `sexo`, `senha`, `id_cargo`, `created`) VALUES
 (20, 'cleiton', '1111111111', 111111111, '1256-12-05', 'cleiton@email.com', 'dwadw11d21', 111111, 'Espírito Santo', 211111221, '21313', 'MedioIncompleto', '2131231', 'Masculino', '1234', 8, '2020-06-11 15:47:47'),
-(21, 'Gisele', '11111111111111', 2147483647, '1188-12-15', 'gisele@email.com', '111111111111', 2147483647, 'Mato Grosso do Sul', 2147483647, '111111111111', 'MedioIncompleto', '11111111111111', 'Masculino', '1234', 9, '2020-06-12 13:51:26');
+(21, 'Gisele', '11111111111111', 2147483647, '1188-12-15', 'gisele@email.com', '111111111111', 2147483647, 'Mato Grosso do Sul', 2147483647, '111111111111', 'MedioIncompleto', '11111111111111', 'Masculino', '1234', 9, '2020-06-12 13:51:26'),
+(22, 'admin', '11111111111', 111111111, '47577-05-04', '1111dwadaw1111111@dwad', 'jdoksaokdoaskdopa', 231321, 'Sergipe', 999898989, '1684896525', 'Fundamental Incompleto', 'dw31', 'Masculino', '312', 8, '2020-06-25 18:19:59'),
+(23, 'funcionario', '11111111', 1111111, '5115-12-15', 'funcionario@email', '1111111111111111', 1111111111, 'Alagoas', 4555555, '111111111', 'FundamentalCompleto', '111111111', 'Não informado', '1234', 9, '2020-06-26 16:23:22');
 
 -- --------------------------------------------------------
 
@@ -9975,19 +9975,19 @@ ALTER TABLE `tb_cidades`
 -- AUTO_INCREMENT de tabela `cargos`
 --
 ALTER TABLE `cargos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `chamado`
 --
 ALTER TABLE `chamado`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `estados`
@@ -9999,7 +9999,7 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de tabela `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de tabela `tb_cidades`
