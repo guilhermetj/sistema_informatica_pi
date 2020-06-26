@@ -6,13 +6,17 @@ class RelatorioDAO extends Model
     {
         parent::__construct();
     }
-    public function contar($table = '', $condicao = '')
+    public function contar($table = '', $condicao = '', $id = '')
     {
     	$where = '';
+        $id_funcionario = '';
     	if($condicao != '') {
     		$where = "WHERE {$condicao}";
     	}
-    	$sql = "SELECT count(*) as total FROM {$table} {$where};";
+        if($id != '') {
+            $id_funcionario = "AND {$id}";
+        }
+    	$sql = "SELECT count(*) as total FROM {$table} {$where} {$id_funcionario};";
         /*var_dump($sql);exit;*/
     	$stmt = $this->db->prepare($sql);
     	$stmt->execute();

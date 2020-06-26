@@ -1,4 +1,5 @@
 <?php require_once 'includes/validacao.php'; ?>
+<?php require_once './includes/funcoes.php'; ?>
 <!DOCTYPE html>
 <html>
 

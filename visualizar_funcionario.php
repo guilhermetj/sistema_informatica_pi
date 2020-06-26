@@ -20,7 +20,7 @@
 	if(isset($_GET['id']) && $_GET['id'] != ''){
 		$id = $_GET['id'];
 		$funcionarioDAO = new FuncionarioDAO();
-		$funcionario = $funcionarioDAO->get($id);
+		$funcionario = $funcionarioDAO->getFuncionario($id);
 	}
 ?>
 
@@ -56,7 +56,7 @@
 	<label>Estado: <?php echo $funcionario->getEstado() ?></label><br>
 	<label>Endereço: <?php echo $funcionario->getEndereco() ?></label><br>
 	<label>Nascimento: <?php echo $funcionario->getNascimento() ?></label><br>
-	<label>Cargo: <?php echo $funcionario->getIdCargo() ?></label><br>
+	<label>Cargo: <?= $funcionario->nome_cargo; ?></label><br>
 	<label>Criado em : <?php echo $funcionario->getCreated() ?></label><br>
 	</div>
 	<div class="container">

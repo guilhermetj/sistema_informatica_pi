@@ -27,10 +27,6 @@ if ($acao == 'deletar') {
 function cadastrar($cargosDAO, $cargos){
 
 $cargos->setNome($_POST['nome']);
-$cargos->setLer($_POST['ler']);
-$cargos->setEditar($_POST['editar']);
-$cargos->setCadastrar($_POST['cadastrar']);
-$cargos->setExcluir($_POST['excluir']);
 $cargosDAO->insereCargos($cargos);
 
 }
@@ -38,14 +34,10 @@ function editar($cargosDAO, $cargos, $id){
 
 $cargos->setId($_POST['id']);
 $cargos->setNome($_POST['nome']);
-$cargos->setLer($_POST['ler']);
-$cargos->setEditar($_POST['editar']);
-$cargos->setCadastrar($_POST['cadastrar']);
-$cargos->setExcluir($_POST['excluir']);
 $cargosDAO->alteraCargos($cargos);
 
 }
 function deletar($cargosDAO, $id){
 	 $cargosDAO->deletar($id);
 }
-header("Location: cargos.php?msg=$msg");
+header("Location: permissoes.php?msg=$msg");

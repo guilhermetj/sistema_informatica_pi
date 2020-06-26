@@ -5,7 +5,7 @@ require 'classes/Chamado.php';
 require 'classes/ChamadoDAO.php';
 $chamadoDAO = new ChamadoDAO();
 $funcionario = $_SESSION['id_funcionario'];
-$chamados = $chamadoDAO->listarFinalizado($funcionario);
+$chamados = $chamadoDAO->listarTodos($funcionario);
 ?>
 <div style="width: 100%;">
 	<?php
@@ -18,22 +18,25 @@ $chamados = $chamadoDAO->listarFinalizado($funcionario);
 		<thead>
 			<tr>
 				<th>Cliente</th>
+				<th>Funcionario</th>
 				<th>Status</th>
 				<th>Equipamento</th>
-				<th>Finalizado</th>
-				<th>Visualizar</th>
-				<th></th>
+				<th>descricao</th>
+				<th>Abertura</th>
+				<th>Ações</th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php foreach ($chamados as $chamado) { ?>
 				<tr>
 					<td><?= $chamado->nome_cliente; ?></td>
+					<td><?= $chamado->nome_funcionario; ?></td>
 					<td><?= $chamado->getStatus() ?></td>
 					<td><?= $chamado->getEquipamento() ?></td>
-					<td><?= $chamado->getEncerramento() ?></td>
+					<td><?= $chamado->getDescricao() ?></td>
+					<td><?= $chamado->getAbertura() ?></td>
 					<td>
-					<a class="btn btn-primary" href="visualizar_chamado.php?id=<?= $chamado->getId() ?>"><i class="fa fa-eye"></i></a>
+						
 					</td>
 				</tr>
 			<?php } ?>

@@ -1,16 +1,9 @@
-<?php 
-
-
-/**
- * 
- */
-class Cargos
+<?php
+class Controle
 {
-	
-	private $id;
-	private $nome;
 
-	
+	private $id; 
+	private $nome; 
 
     /**
      * @return mixed
@@ -52,5 +45,4 @@ class Cargos
         return $this;
     }
 
-    
 }

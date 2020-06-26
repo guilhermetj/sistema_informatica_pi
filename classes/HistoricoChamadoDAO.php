@@ -23,11 +23,23 @@ class HistoricoChamadoDAO extends Model
         $sql = "SELECT h.*,f.nome FROM {$this->tabela} h
         LEFT JOIN funcionario f ON f.id = h.id_funcionario
         ORDER BY id DESC";
+        /*var_dump($sql);exit;*/
         $stmt = $this->db->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_CLASS, $this->class);
         $stmt->execute();
         return $stmt->fetchAll();
         /*var_dump($stmt);exit;*/
+    }
+        public function getHistorico($id)
+    {
+        $sql = "SELECT h.*,f.nome FROM {$this->tabela} h
+        LEFT JOIN funcionario f ON f.id = h.id_funcionario
+        WHERE h.id_chamado = {$id}";
+        /*var_dump($sql);exit;*/
+        $stmt = $this->db->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, $this->class);
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 
 } 

@@ -63,4 +63,38 @@ class FuncionarioDAO extends Model
         $stmt->execute();
         return $stmt->fetch();
     }
+     public function listarfuncionarios()
+    {
+        $sql = "SELECT fn.*, ca.nome AS nome_cargo, fn.nome AS nome_funcionario FROM {$this->tabela} fn 
+        LEFT JOIN cargos ca ON ca.id = fn.id_cargo";
+        /*var_dump($sql);exit;*/
+        $stmt = $this->db->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, $this->class);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+        public function getFuncionario($id)
+    {
+        $sql = "SELECT fn.*, ca.nome AS nome_cargo, fn.nome AS nome_funcionario FROM {$this->tabela} fn 
+        LEFT JOIN cargos ca ON ca.id = fn.id_cargo
+        WHERE fn.id = {$id}";
+        /*var_dump($sql);exit;*/
+        $stmt = $this->db->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, $this->class);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+        public function getPermissoes($id_cargo)
+    {
+        $sql = "SELECT ca.nome, pm.*, c.nome as nome
+                FROM cargos ca
+                LEFT JOIN permissoes pm ON pm.id_cargo = ca.id
+                LEFT JOIN controles c ON c.id = pm.id_controle
+                WHERE ca.id = {$id_cargo}";
+        /*var_dump($sql);exit;*/
+        $stmt = $this->db->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }

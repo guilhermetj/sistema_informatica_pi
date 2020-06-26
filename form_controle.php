@@ -1,14 +1,14 @@
 <?php include './layout/header.php'; ?>
 <?php include './layout/menu.php'; ?>
 <?php
-require 'classes/Cargos.php';
-require 'classes/CargosDAO.php';
-$cargos = new Cargos();
+require 'classes/Controle.php';
+require 'classes/ControleDAO.php';
+$controles = new Controle();
 
 if (isset($_GET['id']) && $_GET['id'] != '') {
     $id = $_GET['id'];
-    $cargosDAO = new CargosDAO();
-    $cargos = $cargosDAO->get($id);
+    $controlesDAO = new ControleDAO();
+    $controles = $controlesDAO->get($id);
 }
 ?>
 <style>
@@ -28,18 +28,18 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
 <div class="container">
 <br>
     <div class="h3topo" style="text-align: center;">
-        <h3>Gerenciar Cargo</h3>
+        <h3>Gerenciar Controle</h3>
         <spam>Preença todos os campos abaixo</spam>
     </div>
     <hr>
     <br>
     <div class="col cargos">
-            <form action="controle_cargos.php?acao=<?=($cargos->getId() != '' ? 'editar' : 'cadastrar')?>" method="post">
+            <form action="controle_controles.php?acao=<?=($controles->getId() != '' ? 'editar' : 'cadastrar')?>" method="post">
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <input type="hidden" name="id" class="form-control" id="id" value="<?=($cargos->getId() != '' ? $cargos->getId(): '')?>">
+                    <input type="hidden" name="id" class="form-control" id="id" value="<?=($controles->getId() != '' ? $controles->getId(): '')?>">
                     <label for="nome">Nome</label>
-                    <input type="text" name="nome" class="form-control" id="nome" value="<?=($cargos->getNome() != '' ? $cargos->getNome(): '')?>">
+                    <input type="text" name="nome" class="form-control" id="nome" value="<?=($controles->getNome() != '' ? $controles->getNome(): '')?>">
                 </div>
             </div>
             <br>

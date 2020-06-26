@@ -11,21 +11,25 @@ require 'classes/Cliente.php';
 require 'classes/ClienteDAO.php';
 $clienteDAO = new ClienteDAO();
 $clientes = $clienteDAO->listar();
+
 require 'classes/Funcionario.php';
 require 'classes/FuncionarioDAO.php';
 $funcionarioDAO = new FuncionarioDAO();
 $funcionarios = $funcionarioDAO->listar();
 require 'classes/HistoricoChamado.php';
 require 'classes/HistoricoChamadoDAO.php';
-$historicoChamadoDAO = new HistoricoChamadoDAO();
-$HistoricoChamados = $historicoChamadoDAO->listarHistorico();
 
 
 if (isset($_GET['id']) && $_GET['id'] != '') {
     $id = $_GET['id'];
     $chamadoDAO = new ChamadoDAO();
     $chamado = $chamadoDAO->getChamado($id);
+
+    $historicoChamadoDAO = new HistoricoChamadoDAO();
+    $historicoChamados = $historicoChamadoDAO->getHistorico($id);
+    /*var_dump($historicoChamados);exit;*/
 }
+
 ?>
 <style>
     .chamado {
@@ -36,7 +40,7 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
         padding-right: 0px;
         margin-right: 200px;
     }
-    spam {
+    span {
         color: #A9A9A9;
     }
 </style>
@@ -55,7 +59,7 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
                 ?>
     <br>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 <?php echo (!isset($_GET['id']) && $_GET['id'] == '' ? 'offset-4' : '') ?>">
 
             <form action="controle_chamado.php?acao=<?= ($chamado->getId() != '' ? 'editar' : 'cadastrar') ?>" method="post">
                 <div class="form-row">
@@ -99,32 +103,26 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
                 </div>
             </form>
         </div>
+        <?php if (isset($_GET['id']) && $_GET['id'] != '') { ?>
         <div class="col-md-6">
             <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                   Registrar Historico
                 </button>
-                <table class="table text-center" >
-        <thead>
-            <tr>
-                <th>Funcionario</th>
-                <th>Data</th>
-                <th>Descrição</th>
-                <th>Solução</th>
-            </tr>
-        </thead>
         <tbody class="table-striped">
-            <?php foreach ($HistoricoChamados as $HistoricoChamado) { ?>
-                <tr>
-                    <td><?= $HistoricoChamado->nome; ?></td>
-                    <td><?= $HistoricoChamado->getDtHistorico() ?></td>
-                    <td><?= $HistoricoChamado->getDescricao() ?></td>
-                    <td><?= $HistoricoChamado->getSolucao() ?></td>
-                </tr>
+            <?php foreach ($historicoChamados as $historicoChamado) { ?>
+                    <div class="card" style="width: 18rem;">
+                      <div class="card-body">
+                        <h5 class="card-title">Funcionario: <?= $historicoChamado->nome; ?></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Data: <?= $historicoChamado->getDtHistorico() ?></h6>
+                        <p class="card-text"><?= $historicoChamado->getDescricao() ?></p>
+                        <p class="card-text"><?= $historicoChamado->getSolucao() ?></p>
+                      </div>
+                    </div>
             <?php } ?>
         </tbody>
-    </table>
         </div>
+        <?php } ?>
     </div>
 </div>
     <!-- Modal -->

@@ -4,10 +4,11 @@
 <?php 
 include 'classes/RelatorioDAO.php';
 $relatorioDAO = new RelatorioDAO();
+$funcionario = $_SESSION['id_funcionario'];
+$total_chamado_iniciado = $relatorioDAO->contar('chamado', "status = 'Em andamento'", "id_funcionario = '{$funcionario}'");
 $total_cliente = $relatorioDAO->contar('cliente');
 $total_funcionario = $relatorioDAO->contar('funcionario');
-$total_chamado_finalizado = $relatorioDAO->contar('chamado', "status = 'Finalizado'");
-$total_chamado_iniciado = $relatorioDAO->contar('chamado', "status = 'Iniciado'");
+$total_chamado_finalizado = $relatorioDAO->contar('chamado', "status = 'Finalizado'","id_funcionario = '{$funcionario}'");
 /*var_dump($total_chamado_finalizado);exit;*/
 //primeiro grafico
 $grafico_total_chamados = json_encode($relatorioDAO->contarChamadoAndamento());
@@ -43,7 +44,7 @@ $grafico_cliente_mes = json_encode($relatorioDAO->contarMesCliente());
                     </a>
                 </div>
                 <div class="col" style="text-align: center;">
-                    <a href="chamado.php" style="text-decoration: none;">
+                    <a href="chamado_andamento.php" style="text-decoration: none;">
                         <div class="card bg-primary text-white">
                             <div class="card-body">
                                 <i class="fas fa-headset fa-3x"></i>
@@ -54,7 +55,7 @@ $grafico_cliente_mes = json_encode($relatorioDAO->contarMesCliente());
                     </a>
                 </div>
                 <div class="col" style="text-align: center;">
-                    <a href="chamado.php" style="text-decoration: none;">
+                    <a href="chamado_finalizado.php" style="text-decoration: none;">
                         <div class="card bg-danger text-white">
                             <div class="card-body">
                                 <i class="fas fa-headset fa-3x"></i>
@@ -97,23 +98,10 @@ $grafico_cliente_mes = json_encode($relatorioDAO->contarMesCliente());
 
             <div class="row">
                 <div class="col">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                     <div class="card">
                         <div class="card-header">
                             <h6>Por categoria de atendimento</h6>
-                            <!-- <form action="#">
-                                <div class="form-group">
-                                    <label for="filtro">Chamados em categorias</label>
-                                    <select name="filtroTempoChamados" id="filtro_chamados" class="form-control">
-                                        <option value="diario">Dia</option>
-                                        <option value="diario">Semana</option>
-                                        <option value="diario">Mês</option>
-                                        <option value="diario">Trimestre</option>
-                                        <option value="diario">Semestre</option>
-                                        <option value="diario">Ano</option>
-                                    </select>
-                                </div>
-                            </form> -->
                         </div>
                         <div class="card-body">
                             <div id="chamados"></div>
@@ -121,90 +109,17 @@ $grafico_cliente_mes = json_encode($relatorioDAO->contarMesCliente());
                     </div>
                     </div>
                 </div> 
-                <!-- <div class="col">
-                    <div class="col-sm-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <form action="#">
-                                    <div class="form-group">
-                                        <label for="filtro_perso">Filtragem por tempo com visualização personalizada</label>
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <select name="calendario" id="filtro_perso" class="form-control">
-                                                        <option value="1">De:</option>
-                                                        <option value="2">CALENDÁRIO AQUI</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-6">
-                                                    <select name="calendario2" id="filtro_perso2" class="form-control">
-                                                        <option value="1">Até:</option>
-                                                        <option value="2">CALENDÁRIO AQUI</option>
-                                                    </select>
-                                                </div>
-                                            </div>     
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="card-body">
-                                <div id="chamados_perso"></div>
-                            </div>   
-                        </div>   
-                    </div>    
-                </div> -->
             </div>
 
             <div class="mr-auto p-2 "style="width: 100%;">
                 <h3 class="display-4 titulo">Clientes</h3>
             </div>
-
-            <!-- <div class="row">
-                  <div class="col">
-                      <div class="col-sm-12">
-                          <div class="card">
-                              <div class="card-header">
-                                  <h6>Cadastro de clientes por tempo</h6>
-                                  <form action="#">
-                                        <div class="form-group">
-                                            <select name="filtroTempoCliente" id="filtro_clientes" class="form-control">
-                                                <option value="diario">Dia</option>
-                                                <option value="diario">Semana</option>
-                                                <option value="diario">Mês</option>
-                                                <option value="diario">Trimestre</option>
-                                                <option value="diario">Semestre</option>
-                                                <option value="diario">Ano</option>
-                                            </select>
-                                        </div>
-                                  </form>
-                              </div>
-                            <div class="card-body col-sm-12">
-                            <figure class="highcharts-figure">
-                                <div id="container"></div>
-                            </figure>
-                            </div> 
-                          </div>
-                      </div>
-                  </div>
-            </div> -->
-
             <div class="row">
                 <div class="col">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <div class="card">
                             <div class="card-header">
                                 <h6>Clientes cadastrados por tempo</h6>
-                                <!-- <form action="#">
-                                    <div class="form-group">
-                                        <label for="filtro_clientes_atendidos">Clientes atendidos em relação à quantidade de chamados finalizados</label>
-                                        <select name="filtroTempoClienteAtendimento" id="filtro_clientes_chamado" class="form-control">
-                                                    <option value="diario">Dia</option>
-                                                    <option value="diario">Semana</option>
-                                                    <option value="diario">Mês</option>
-                                                    <option value="diario">Trimestre</option>
-                                                    <option value="diario">Semestre</option>
-                                                    <option value="diario">Ano</option>
-                                        </select>
-                                    </div>
-                                </form> -->
                             </div>
                             <div class="card-body col-sm-12">
                             <figure class="highcharts-figure">
