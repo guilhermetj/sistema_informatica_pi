@@ -36,7 +36,7 @@ $chamados = $chamadoDAO->listarTodos($funcionario);
 					<td><?= $chamado->getDescricao() ?></td>
 					<td><?= $chamado->getAbertura() ?></td>
 					<td>
-						
+						<a href="teste_pdf.php" class="btn btn-primary">PDF</a>
 					</td>
 				</tr>
 			<?php } ?>

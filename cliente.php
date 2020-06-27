@@ -25,7 +25,9 @@ $clientes = $clienteDAO->listar();
 				<th>E-mail</th>
 				<th>Cep</th>
 				<th>Endereço</th>
+				<?php if($permissoes['editar']): ?>	
 				<th>Ação</th>
+				<?php endif; ?>
 			</tr>
 		</thead>
 		<tbody class="table-striped">

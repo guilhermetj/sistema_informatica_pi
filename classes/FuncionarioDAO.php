@@ -66,7 +66,8 @@ class FuncionarioDAO extends Model
      public function listarfuncionarios()
     {
         $sql = "SELECT fn.*, ca.nome AS nome_cargo, fn.nome AS nome_funcionario FROM {$this->tabela} fn 
-        LEFT JOIN cargos ca ON ca.id = fn.id_cargo";
+        LEFT JOIN cargos ca ON ca.id = fn.id_cargo
+        ORDER BY id ASC";
         /*var_dump($sql);exit;*/
         $stmt = $this->db->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_CLASS, $this->class);

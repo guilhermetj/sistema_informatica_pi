@@ -30,7 +30,6 @@
 						<img class="rounded-circle" src="assets/img/usuario.png" width="20" height="20"> &nbsp;<span class="d-none d-sm-inline"><?= $_SESSION['nome']?></span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="#"><i class="fas fa-user"></i> Perfil</a>
 						<a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt"></i> Sair</a>
 					</div>
 				</li>

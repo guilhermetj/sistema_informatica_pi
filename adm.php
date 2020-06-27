@@ -9,6 +9,10 @@ $total_chamado_iniciado = $relatorioDAO->contar('chamado', "status = 'Em andamen
 $total_cliente = $relatorioDAO->contar('cliente');
 $total_funcionario = $relatorioDAO->contar('funcionario');
 $total_chamado_finalizado = $relatorioDAO->contar('chamado', "status = 'Finalizado'","id_funcionario = '{$funcionario}'");
+require 'classes/Funcionario.php';
+require 'classes/FuncionarioDAO.php';
+$funcionarioDAO = new FuncionarioDAO();
+$funcionarios = $funcionarioDAO->listarfuncionarios();
 /*var_dump($total_chamado_finalizado);exit;*/
 //primeiro grafico
 $grafico_total_chamados = json_encode($relatorioDAO->contarChamadoAndamento());
@@ -97,8 +101,7 @@ $grafico_cliente_mes = json_encode($relatorioDAO->contarMesCliente());
             </div>
 
             <div class="row">
-                <div class="col">
-                    <div class="col-sm-6">
+                    <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
                             <h6>Por categoria de atendimento</h6>
@@ -107,9 +110,21 @@ $grafico_cliente_mes = json_encode($relatorioDAO->contarMesCliente());
                             <div id="chamados"></div>
                         </div>
                     </div>
+                </div>
+                <div class="col-md-6">
+                <tbody class="table-striped">
+                <?php foreach ($funcionarios as $funcionario) { ?>
+                    <div class="card" style="width: 18rem;">
+                      <div class="card-body">
+                        <h5 class="card-title">Funcionario: <?= $funcionario->getNome() ?></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Cargo: <?= $funcionario->nome_cargo; ?></h6>
+                      </div>
                     </div>
-                </div> 
+                <?php } ?>
+                </tbody>
+                </div>
             </div>
+
 
             <div class="mr-auto p-2 "style="width: 100%;">
                 <h3 class="display-4 titulo">Clientes</h3>
@@ -136,7 +151,6 @@ $grafico_cliente_mes = json_encode($relatorioDAO->contarMesCliente());
             </div>
         </div>         
     </div>
-    
 
 <?php include 'layout/footer.php'; ?>
 
@@ -191,131 +205,6 @@ $grafico_cliente_mes = json_encode($relatorioDAO->contarMesCliente());
 </script>
 
 
-<!-- visualização personalizada -->
-<!-- <script>
-    Highcharts.chart('chamados_perso', {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'bar'
-    },
-    title: {
-        text: 'Chamados do mês MM/YYYY'
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    accessibility: {
-        point: {
-            valueSuffix: '%'
-        }
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-            }
-        }
-    },
-    series: [{
-        name: 'Brands',
-        colorByPoint: true,
-        data: [{
-            name: 'Chrome',
-            y: 61.41,
-            sliced: true,
-            selected: true
-        }, {
-            name: 'Internet Explorer',
-            y: 11.84
-        }, {
-            name: 'Firefox',
-            y: 10.85
-        }, {
-            name: 'Edge',
-            y: 4.67
-        }, {
-            name: 'Safari',
-            y: 4.18
-        }, {
-            name: 'Sogou Explorer',
-            y: 1.64
-        }, {
-            name: 'Opera',
-            y: 1.6
-        }, {
-            name: 'QQ',
-            y: 1.2
-        }, {
-            name: 'Other',
-            y: 2.61
-        }]
-    }]
-});
-</script> -->
-
-
-<!-- clientes dia/semana/mes/trimestre/semestre/ano -->
-<!-- <script>
-    Highcharts.chart('container', {
-
-title: {
-    text: ''
-},
-
-subtitle: {
-    text: ''
-},
-
-yAxis: {
-    title: {
-        text: 'Número de clientes cadastrados'
-    }
-    
-},
-
-xAxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    },
-
-legend:false,
-credits: false,
-
-plotOptions: {
-        line: {
-            dataLabels: {
-                enabled: true
-            },
-            enableMouseTracking: true
-        }
-},
-
-series: [{
-    name: 'Cadastros',
-    data: [103, 178, 304, 350, 104, 670, 70, 350]
-},],
-
-responsive: {
-    rules: [{
-        condition: {
-            maxWidth: 500
-        },
-        chartOptions: {
-            legend: {
-                layout: 'horizontal',
-                align: 'center',
-                verticalAlign: 'bottom'
-            }
-        }
-    }]
-}
-
-});
-</script> -->
 
 
 <!-- clientes dia/semana/mes/trimestre/semestre/ano -->

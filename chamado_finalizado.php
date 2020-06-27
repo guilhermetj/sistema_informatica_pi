@@ -22,6 +22,7 @@ $chamados = $chamadoDAO->listarFinalizado($funcionario);
 				<th>Equipamento</th>
 				<th>Finalizado</th>
 				<th>Visualizar</th>
+				<th>Gerar PDF</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -33,7 +34,10 @@ $chamados = $chamadoDAO->listarFinalizado($funcionario);
 					<td><?= $chamado->getEquipamento() ?></td>
 					<td><?= $chamado->getEncerramento() ?></td>
 					<td>
-					<a class="btn btn-primary" href="visualizar_chamado.php?id=<?= $chamado->getId() ?>"><i class="fa fa-eye"></i></a>
+					<a class="btn btn-primary" href="visualizar_chamadoFinalizado.php?id=<?= $chamado->getId() ?>"><i class="fa fa-eye"></i></a>
+					</td>
+					<td>
+						<a href="pdf_chamado_finalizado.php?id=<?= $chamado->getId() ?>" class="btn btn-success"><i class="fas fa-file-pdf"></i></a>
 					</td>
 				</tr>
 			<?php } ?>

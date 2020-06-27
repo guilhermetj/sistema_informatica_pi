@@ -85,8 +85,9 @@ class ChamadoDAO extends Model
     }
     public function getChamado($id)
     {
-        $sql = "SELECT ch.*, cl.nome AS nome_cliente FROM {$this->tabela} ch 
+        $sql = "SELECT ch.*, cl.nome AS nome_cliente, fn.nome AS nome_funcionario FROM {$this->tabela} ch 
         LEFT JOIN cliente cl ON cl.id = ch.id_cliente
+        LEFT JOIN funcionario fn ON fn.id = ch.id_funcionario
         WHERE ch.id = {$id}";
         /*var_dump($sql);exit;*/
         $stmt = $this->db->prepare($sql);
