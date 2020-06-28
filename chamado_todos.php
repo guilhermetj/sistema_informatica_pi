@@ -15,35 +15,64 @@ $chamados = $chamadoDAO->listarTodos($funcionario);
 		  <div class="d_flex"></div>
 			<div class="container">
 				<div class="h3topo" style="text-align: center;">
-        			<h3>Lista de tickets</h3>
+        			<h3>Lista de Chamados</h3>
     			</div><br>
 				<div class="row">
 				<?php foreach ($chamados as $chamado) { ?>
 					<div class="col-sm-6">
 						<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">Chamado n° <?= $chamado->getid() ?></h5>
-							<p class="card-text">Com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional.</p>
-							<a href="#" class="btn btn-primary">Visitar</a>
-						</div>
+							<div class="card-body">
+								<h5 class="card-title">Chamado n° <?= $chamado->getid() ?></h5>
+								<ul>
+									<li>
+										Cliente: <strong><?= $chamado->nome_cliente; ?></strong>
+									</li>
+									<li>
+										Funcionário: <strong><?= $chamado->nome_funcionario; ?></strong>
+									</li>
+									<li>
+										Status: <strong><?= $chamado->getStatus() ?></strong>
+									</li>
+									<li>
+										Equipamento: <strong><?= $chamado->getEquipamento() ?></strong>
+									</li>
+									<li>
+										Abertura: <strong><?= $chamado->getAbertura() ?></strong>
+									</li>
+								</ul>
+								<a target="__blank" href="pdf_chamado_finalizado.php?id=<?= $chamado->getId() ?>" class="btn btn-success"><i class="fas fa-file-pdf"></i></a>
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#descricaodotick">Ver descrição</button>
+							</div>
 						</div>
 					</div>
 				<?php } ?>
-					<!-- <div class="col-sm-6">
-						<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">Chamado n° <?= $chamado->getid() ?></h5>
-							<p class="card-text">Com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional.</p>
-							<a href="#" class="btn btn-primary">Visitar</a>
-						</div>
-						</div>
-					</div> -->
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
+<?php foreach ($chamados as $chamado) { ?>
+	<div class="modal fade" id="descricaodotick" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Descrição do chamado</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<?= $chamado->getDescricao() ?>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+				<a href="form_chamado.php" class="btn btn-primary">Alterar</a>
+			</div>
+			</div>
+		</div>
+	</div>
+<?php } ?>
 
 
 
