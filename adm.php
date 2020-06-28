@@ -18,144 +18,154 @@ $funcionarios = $funcionarioDAO->listarfuncionarios();
 $grafico_total_chamados = json_encode($relatorioDAO->contarChamadoAndamento());
 
 //segundo grafico
-$grafico_cliente_mes = json_encode($relatorioDAO->contarMesCliente());
+$grafico_cliente_mes = ($relatorioDAO->contarMesCliente());
 
  ?>
+ 
+<style>
+  button.btn {
+    border-radius: 5px;
+  }
+  .d_flex {
+    margin-bottom: 20px;
+  }
+</style>
 
-
-    <div class="content p-1">
-        <div class="list-group-item">
-            <div class="d-flex">
-                <div class="mr-auto p-2 "style="width: 100%;">
-                <?php
-                  if (isset($_GET['msg']) && $_GET['msg'] != '') {
-                    echo '<div class="alert alert-success text-center">' . $_GET['msg'] . '</div>';
-                  }
-                  ?>
-                    <h2 class="display-4 titulo">Dashboard</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col" style="text-align: center">
-                    <a href="cliente.php" style="text-decoration: none;">
-                        <div class="card bg-success text-white">
-                            <div class="card-body">
-                                <i class="fas fa-users fa-3x"></i>
-                                <h6 class="card-title">Clientes</h6>
-                                <h2 class="lead cliente"><?= $total_cliente['total'] ?? 0; ?></h2>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col" style="text-align: center;">
-                    <a href="chamado_andamento.php" style="text-decoration: none;">
-                        <div class="card bg-primary text-white">
-                            <div class="card-body">
-                                <i class="fas fa-headset fa-3x"></i>
-                                <h6 class="card-title">Em andamento</h6>
-                                <h2 class="lead chamado"><?= $total_chamado_iniciado['total'] ?? 0; ?></h2>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col" style="text-align: center;">
-                    <a href="chamado_finalizado.php" style="text-decoration: none;">
-                        <div class="card bg-danger text-white">
-                            <div class="card-body">
-                                <i class="fas fa-headset fa-3x"></i>
-                                <h6 class="card-title">Finalizados</h6>
-                                <h2 class="lead chamado"><?= $total_chamado_finalizado['total'] ?? 0; ?></h2>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col" style="text-align: center;">
-                     <a href="funcionario.php" style="text-decoration: none;">
-                        <div class="card bg-secondary text-white">
-                            <div class="card-body">
-                                <i class="fas fa-address-card fa-3x"></i> 
-                                <h6 class="card-title">Funcionarios</h6>
-                                <h2 class="lead funcionario"><?= $total_funcionario['total'] ?? 0; ?></h2>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <div class="card-header" style="text-align: center; border-radius: 5px;">
+      <h4>Dashboard</h4>
     </div>
-
-
-            <!-- GRÁFICOS -->
-            <div class="d-flex">
-                <div class="mr-auto p-0 text-center" style="width: 100%; margin-top: 15px;">
-                    <div class="card">
-                        <div class="card-header">
-                            <h2 class="display-4 titulo">Geração de Relatórios e Vizualização de Estatísticas de Atendimento</h2>
-                        </div>
-                    </div>
-                </div>
+    <!-- Icon Cards-->
+    <div class="row" style="margin-top: 10px;">
+      <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-primary o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fas fa-user-friends"></i>
             </div>
-
-            <div class="mr-auto p-2 "style="width: 100%;">
-                <h3 class="display-4 titulo">Chamados</h3>
+            <div class="mr-5"><?= $total_cliente['total'] ?? 0; ?> Clientes</div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" href="cliente.php">
+            <span class="float-left">Mais Detalhes</span>
+            <span class="float-right">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-warning o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fa fa-fw fa-list"></i>
             </div>
+            <div class="mr-5"><?= $total_chamado_iniciado['total'] ?? 0; ?> Tickets Abertos</div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" href="chamado_andamento.php">
+            <span class="float-left">Mais Detalhes</span>
+            <span class="float-right">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-success o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fas fa-tasks"></i>
+            </div>
+            <div class="mr-5"><?= $total_chamado_finalizado['total'] ?? 0; ?> Tickets Encerrados</div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" href="chamado_finalizado.php">
+            <span class="float-left">Mais Detalhes</span>
+            <span class="float-right">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-danger o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <div class="mr-5"><?= $total_funcionario['total'] ?? 0; ?> Funcionários</div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" href="funcionario.php">
+            <span class="float-left">Mais Detalhes</span>
+            <span class="float-right">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-            <div class="row">
-                    <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h6>Por categoria de atendimento</h6>
-                        </div>
-                        <div class="card-body">
-                            <div id="chamados"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                <tbody class="table-striped">
+  <div class="graficos" style="margin-bottom: 10px;">
+    <div class="container-fluid" style="margin-bottom: 10px;">
+      <div class="d_flex">
+        <div class="card">
+          <div class="card-header">
+            <h6><i class="fas fa-calendar-alt"></i> Clientes cadastrados por tempo</h6>
+          </div>
+          <div class="card-body">
+            <figure class="highcharts-figure">
+              <div id="clientes_cadastrados"></div>
+              <button class="btn btn-info" id="plain">Plano</button>
+              <button class="btn btn-info" id="inverted">Invertido</button>
+              <button class="btn btn-info" id="polar">Polar</button>
+            </figure>
+          </div> 
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row d_flex" style="margin-bottom: 70px;">
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header">
+              <h6><i class="fa fa-area-chart"></i> Relatórios e Vizualização de Estatísticas de Chamados</h6>
+            </div>
+            <div class="card-body" style="padding-bottom: 30px; padding-top: 28px;">
+              <div id="chamados"></div>
+            </div>
+            <div class="card-footer small text-muted" style="text-align: center;">Junho de 2020</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+              <div class="card-header">
+                <i class="fas fa-user-tie"></i> Funcionários</div>
                 <?php foreach ($funcionarios as $funcionario) { ?>
-                    <div class="card" style="width: 18rem;">
-                      <div class="card-body">
-                        <h5 class="card-title">Funcionario: <?= $funcionario->getNome() ?></h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Cargo: <?= $funcionario->nome_cargo; ?></h6>
+                <div class="list-group list-group-flush small">
+                  <a class="list-group-item list-group-item-action" href="#">
+                    <div class="media">
+                      <img class="d-flex mr-3 rounded-circle" style="width: 15%;" src="assets/img/user.png" alt="">
+                      <div class="media-body">
+                        <strong><?= $funcionario->getNome() ?> </strong> Atualmente está oculpando o cargo de <?= $funcionario->nome_cargo; ?>.
+                        <div class="text-muted smaller">última atualização hoje as 18:40</div>
                       </div>
                     </div>
+                  </a>
+                </div>
                 <?php } ?>
-                </tbody>
-                </div>
             </div>
-
-
-            <div class="mr-auto p-2 "style="width: 100%;">
-                <h3 class="display-4 titulo">Clientes</h3>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <h6>Clientes cadastrados por tempo</h6>
-                            </div>
-                            <div class="card-body col-sm-12">
-                            <figure class="highcharts-figure">
-                                <div id="clientes_cadastrados"></div>
-
-                                <button id="plain">Plain</button>
-                                <button id="inverted">Inverted</button>
-                                <button id="polar">Polar</button>
-                            </figure>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>         
+            <a class="list-group-item list-group-item-action" href="funcionario.php">Mais detalhes</a>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
 <?php include 'layout/footer.php'; ?>
 
 
-<!-- chamados dia/semana/mes/trimestre/semestre/ano -->
 <script>
     var dadosTotalChamados = JSON.parse('<?php echo $grafico_total_chamados; ?>');
 
@@ -204,51 +214,41 @@ $grafico_cliente_mes = json_encode($relatorioDAO->contarMesCliente());
 });
 </script>
 
-
-
-
 <!-- clientes dia/semana/mes/trimestre/semestre/ano -->
 <script>
-
-    var arrayphp = (JSON.parse('<?php echo $grafico_cliente_mes; ?>'));
-
-    arrayjs = [];
-    for(var x in arrayphp){
-        arrayjs[x] = {
-            categories:arrayphp[x].clientes,
-            data:arrayphp[x].mes,
-            
-        }
-           
-    }
-
 
     var chart = Highcharts.chart('clientes_cadastrados', {
     
     title: {
-        text: 'Chart.update'
+        text: ''
     },
 
     subtitle: {
-        text: 'Plain'
+        text: ''
     },
 
     xAxis: {
         
-        categories:[arrayjs[0].categories,arrayjs[1].categories] //foreach(?) aqui dentro dos colchetes
-            
-        //[
-        //$arrayClientesMes = array($grafico_cliente_mes);
-        //foreach ($arrayClientesMes as $clienteMes){  
-        //}]
-    
-            
+        categories: [
+                        <?php $n = 0; foreach($grafico_cliente_mes as $mes) { ?>
+                            '<?php echo $mes['mes']; ?>' <?php if($n < count($grafico_cliente_mes)) { echo ','; }?>
+                        <?php $n++; } ?>
+
+                    ] //foreach(?) aqui dentro dos colchetes
+               
     },
 
     series: [{
         type: 'column',
         colorByPoint: false,
-        data:[arrayjs[x].data],//foreach com dados aqui dentro dos colchetes 
+        data:[
+                <?php $n = 0; foreach($grafico_cliente_mes as $data) { ?>
+                    <?php echo $data['clientes']; ?>
+                    <?php if($n < count($grafico_cliente_mes)) { echo ','; }?>
+                <?php $n++; } ?>
+
+            ],//foreach com dados aqui dentro dos colchetes 
+        
         showInLegend: false
     }]
 
@@ -290,4 +290,6 @@ $grafico_cliente_mes = json_encode($relatorioDAO->contarMesCliente());
         }
     });
     });
+
+    
 </script>

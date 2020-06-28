@@ -7,40 +7,45 @@ $chamadoDAO = new ChamadoDAO();
 $funcionario = $_SESSION['id_funcionario'];
 $chamados = $chamadoDAO->listarTodos($funcionario);
 ?>
-<div style="width: 100%;">
-	<?php
-	if (isset($_GET['msg']) && $_GET['msg'] != '') {
-		echo '<div class="alert alert-info text-center">' . $_GET['msg'] . '</div>';
-	}
-	?>
 
-	<table class="table text-center">
-		<thead>
-			<tr>
-				<th>Cliente</th>
-				<th>Funcionario</th>
-				<th>Status</th>
-				<th>Equipamento</th>
-				<th>descricao</th>
-				<th>Abertura</th>
-				<th>Ações</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach ($chamados as $chamado) { ?>
-				<tr>
-					<td><?= $chamado->nome_cliente; ?></td>
-					<td><?= $chamado->nome_funcionario; ?></td>
-					<td><?= $chamado->getStatus() ?></td>
-					<td><?= $chamado->getEquipamento() ?></td>
-					<td><?= $chamado->getDescricao() ?></td>
-					<td><?= $chamado->getAbertura() ?></td>
-					<td>
-						<a href="teste_pdf.php" class="btn btn-primary">PDF</a>
-					</td>
-				</tr>
-			<?php } ?>
-		</tbody>
-	</table>
+
+
+<div class="content-wrapper">
+  	<div class="container-fluid" style="margin-top: 30px;">
+		  <div class="d_flex"></div>
+			<div class="container">
+				<div class="h3topo" style="text-align: center;">
+        			<h3>Lista de tickets</h3>
+    			</div><br>
+				<div class="row">
+				<?php foreach ($chamados as $chamado) { ?>
+					<div class="col-sm-6">
+						<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Chamado n° <?= $chamado->getid() ?></h5>
+							<p class="card-text">Com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional.</p>
+							<a href="#" class="btn btn-primary">Visitar</a>
+						</div>
+						</div>
+					</div>
+				<?php } ?>
+					<!-- <div class="col-sm-6">
+						<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Chamado n° <?= $chamado->getid() ?></h5>
+							<p class="card-text">Com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional.</p>
+							<a href="#" class="btn btn-primary">Visitar</a>
+						</div>
+						</div>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
+
+
+
+
 <?php include 'layout/footer.php'; ?>

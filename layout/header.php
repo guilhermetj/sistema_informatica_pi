@@ -11,30 +11,29 @@
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 	<link rel="icon" href="assets/img/favicon.ico">
-	<link rel="stylesheet" href="assets/css/fontawesome.min.css">
+	<link href="assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
 	<link rel="stylesheet" href="assets/css/dashboard.css">
+	<link href="assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+	<link href="assets/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+	<link href="assets/css/sb-admin.css" rel="stylesheet">
 </head>
 
-<body>
-	<nav class="navbar navbar-expand navbar-dark" id="navbar">
-		<a class="sidebar-toggle text-light mr-3">
-			<span class="navbar-toggler-icon"></span>
-		</a>
-		<img src="assets/img/logo.png" style="height: 35px; width: 40px;" >
-		<a class="navbar-brand" href="adm.php" style="margin-left: 5px;">SoftFlow</a>
-
-		<div class="collapse navbar-collapse">
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle menu-header" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
-						<img class="rounded-circle" src="assets/img/usuario.png" width="20" height="20"> &nbsp;<span class="d-none d-sm-inline"><?= $_SESSION['nome']?></span>
-					</a>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt"></i> Sair</a>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</nav>
-
-	<div class="d-flex">
+<body class="fixed-nav sticky-footer bg-dark" id="page-top" style="margin: auto;">
+<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Deseja sair?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Selecione "Sair" caso desejar encerrar a sessão.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-danger" href="login.html">Sair</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
