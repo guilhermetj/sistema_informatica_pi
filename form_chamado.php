@@ -43,8 +43,10 @@
     <div class="h3topo" style="text-align: center;">
         <h3>Formulário de Tickets</h3>
         <spam>Preencha todos os campos abaixo</spam>
-    </div><br>
-    <div class="d_flex <?php echo (!isset($_GET['id']) && $_GET['id'] == '' ? 'offset-4' : '') ?>">
+    </div>
+    <br>
+    <div class="row">
+    <div class=" col-md-6 <?php echo (!isset($_GET['id']) && $_GET['id'] == '' ? 'offset-4' : '') ?>">
       <form action="controle_chamado.php?acao=<?= ($chamado->getId() != '' ? 'editar' : 'cadastrar') ?>" method="post">
         <div class="form-group">
           <input type="hidden" name="id" class="form-control" id="id" value="<?=($chamado->getId() != '' ? $chamado->getId(): '')?>">
@@ -81,15 +83,8 @@
           <button type="submit" class="btn btn-success" style="width: 100%;">Salvar</button>
       </form>
     </div>
-	</div>
-</div>
-
-
 <?php if (isset($_GET['id']) && $_GET['id'] != '') { ?>
-<div class="content-wrapper">
-  <div class="container-fluid">
-    <div class="d_flex" style="margin-left: 410px; margin-right: 410px;">
-      <div class="row">
+<div class="col-md-6">
       <?php foreach ($historicoChamados as $historicoChamado) { ?>
         <div class="card" style="margin-bottom: 15px; width: 98%;">
           <div class="card-header">
@@ -105,11 +100,10 @@
           </div>
         </div>
       <?php } ?>
-      </div>
-    </div>
-    <div class="d_flex" style="text-align: center;">
+    <div style="text-align: center;">
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registroHistorico" style="margin-bottom: 80px;">Registrar Historico</button></div>
-    </div>
+  </div>
+</div>
 </div>
 <?php } ?>
         
@@ -145,15 +139,12 @@
             <label for="exampleFormControlTextarea1">Solução</label>
             <textarea class="form-control" cols="10" rows="5" charswidth="23" name="solucao" style="resize: none; width: 340px;"></textarea>
           </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Salvar</button>
-          </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+        <button type="submit" class="btn btn-primary">Salvar mudanças</button>
       </div>
+        </form>
     </div>
   </div>
 </div>

@@ -48,13 +48,13 @@ $historicoChamadoDAO = new HistoricoChamadoDAO();
 									<li class="list-group-item">
 										Equipamento: <strong><?= $chamado->getEquipamento() ?></strong>
 									</li>
-									<li class="list-group-item>
+									<li class="list-group-item">
 										Descrição: <strong><?= $chamado->getDescricao() ?></strong>
 									</li>
-									<li class="list-group-item>
+									<li class="list-group-item">
 										Abertura: <strong><?= $chamado->getAbertura() ?></strong>
 									</li>
-									<li>
+									<li class="list-group-item">
 										Encerrado: <strong><?= $chamado->getAbertura() ?></strong>
 									</li>
 								</ul>
