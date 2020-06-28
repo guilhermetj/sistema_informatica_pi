@@ -21,7 +21,7 @@ $historicoChamadoDAO = new HistoricoChamadoDAO();
 <div class="content-wrapper">
   	<div class="container-fluid" style="margin-top: 30px;">
 		  <div class="d_flex"></div>
-			<div class="container">
+			<div class="container" style="margin-bottom: 180px;">
 				<div class="h3topo" style="text-align: center;">
         			<h3>Lista de Chamados</h3>
     			</div><br>
@@ -31,26 +31,27 @@ $historicoChamadoDAO = new HistoricoChamadoDAO();
 
 				?>
 					<div class="col-sm-6">
+
 						<div class="card">
 							<div class="card-body">
 								<h5 class="card-title">Chamado n° <?= $chamado->getid() ?></h5>
-								<ul>
-									<li>
+								<ul class="list-group" style="padding-bottom: 15px; padding-top: 15px;">
+									<li class="list-group-item">
 										Cliente: <strong><?= $chamado->nome_cliente; ?></strong>
 									</li>
-									<li>
+									<li class="list-group-item">
 										Funcionário: <strong><?= $chamado->nome_funcionario; ?></strong>
 									</li>
-									<li>
+									<li class="list-group-item">
 										Status: <strong><?= $chamado->getStatus() ?></strong>
 									</li>
-									<li>
+									<li class="list-group-item">
 										Equipamento: <strong><?= $chamado->getEquipamento() ?></strong>
 									</li>
-									<li>
+									<li class="list-group-item>
 										Descrição: <strong><?= $chamado->getDescricao() ?></strong>
 									</li>
-									<li>
+									<li class="list-group-item>
 										Abertura: <strong><?= $chamado->getAbertura() ?></strong>
 									</li>
 									<li>
@@ -92,5 +93,4 @@ $historicoChamadoDAO = new HistoricoChamadoDAO();
 		</div>
 	</div>
 </div>
-
 <?php include 'layout/footer.php'; ?>

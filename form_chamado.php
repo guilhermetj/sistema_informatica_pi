@@ -50,7 +50,7 @@
           <input type="hidden" name="id" class="form-control" id="id" value="<?=($chamado->getId() != '' ? $chamado->getId(): '')?>">
         </div>
         <div class="form-group">
-          <label>Cliente</label>
+          <label>Cliente:</label>
             <?php if ($chamado->getID() == ''){ ?>
               <select class="custom-select" name="id_cliente" id="id_cliente">
                 <?php foreach($clientes as $cliente){ ?>
@@ -78,35 +78,49 @@
           <label for="exampleFormControlTextarea1">Descição</label>
           <textarea class="form-control" rows="5" id="exampleFormControlTextarea1" name="descricao" style="resize: none;"><?= ($chamado->getDescricao() != '' ? $chamado->getDescricao() : '') ?></textarea>
         </div>
-        <button type="submit" class="btn btn-success" style="width: 285px;">Salvar</button>
+          <button type="submit" class="btn btn-success" style="width: 100%;">Salvar</button>
       </form>
     </div>
-    <!-- <?php if (isset($_GET['id']) && $_GET['id'] != '') { ?>
-        <div class="col-md-6">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Registrar Historico</button>
-          <tbody class="table-striped">
-            <?php foreach ($historicoChamados as $historicoChamado) { ?>
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <h5 class="card-title">Funcionario: <?= $historicoChamado->nome; ?></h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Data: <?= $historicoChamado->getDtHistorico() ?></h6>
-                  <p class="card-text"><?= $historicoChamado->getDescricao() ?></p>
-                  <p class="card-text"><?= $historicoChamado->getSolucao() ?></p>
-                </div>
-              </div>
-            <?php } ?>
-          </tbody>
-        </div>
-      <?php } ?> -->
 	</div>
 </div>
 
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+
+<?php if (isset($_GET['id']) && $_GET['id'] != '') { ?>
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <div class="d_flex" style="margin-left: 410px; margin-right: 410px;">
+      <div class="row">
+      <?php foreach ($historicoChamados as $historicoChamado) { ?>
+        <div class="card" style="margin-bottom: 15px; width: 98%;">
+          <div class="card-header">
+          Data: <?= $historicoChamado->getDtHistorico() ?>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Funcionário: <?= $historicoChamado->nome; ?></h5>
+            <p class="card-text">Informações do chamado</p>
+            <ul class="list-group">
+              <li class="list-group-item">Descrição: <?= $historicoChamado->getDescricao() ?></li>
+              <li class="list-group-item">Solução: <?= $historicoChamado->getSolucao() ?></li>
+            </ul>
+          </div>
+        </div>
+      <?php } ?>
+      </div>
+    </div>
+    <div class="d_flex" style="text-align: center;">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registroHistorico" style="margin-bottom: 80px;">Registrar Historico</button></div>
+    </div>
+</div>
+<?php } ?>
+        
+<?php include './layout/footer.php'; ?>
+
+<div class="modal fade" id="registroHistorico" tabindex="-1" role="dialog" aria-labelledby="TituloregistroHistorico" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Registrar historico</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title" id="TituloregistroHistorico">Título do modal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -136,8 +150,10 @@
           </div>
         </form>
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+      </div>
     </div>
   </div>
-</div> -->
-        
-<?php include './layout/footer.php'; ?>
+</div>
