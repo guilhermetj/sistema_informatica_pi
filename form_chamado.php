@@ -108,7 +108,7 @@
       </div>
     </div>
     <div class="d_flex" style="text-align: center;">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="margin-bottom: 80px;">Registrar Historico</button></div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registroHistorico" style="margin-bottom: 80px;">Registrar Historico</button></div>
     </div>
 </div>
 <?php } ?>
@@ -125,7 +125,30 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <form action="controle_historico.php?acao=cadastrar" method="post">
+          <div class="form-group col-md-6">
+            <div class="form-group">
+              <input type="hidden" name="id_chamado" class="form-control" id="id" value="<?=($chamado->getId() != '' ? $chamado->getId(): '')?>">
+            </div>
+            <label>Funcionario:</label>
+            <select class="custom-select" name="id_funcionario"id="id_funcionario">
+              <?php foreach($funcionarios as $funcionario){ ?>
+                <option value="<?= $funcionario->getID() ?>"><?= $funcionario->getNome() ?></option>
+              <?php } ?>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Descrição</label>
+            <textarea class="form-control" cols="10" rows="5" charswidth="23" name="descricao" style="resize: none; width: 340px;"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Solução</label>
+            <textarea class="form-control" cols="10" rows="5" charswidth="23" name="solucao" style="resize: none; width: 340px;"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
