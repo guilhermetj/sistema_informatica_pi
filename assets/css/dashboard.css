@@ -5,7 +5,7 @@ body {
     color: #FFF !important;
 }
 .sidebar{
-    background-color:   #000000;
+    background-color:   #343a40;
     min-width: 250px;
     max-width: 250px;
     min-height: calc(100vh - 56px);
@@ -19,11 +19,11 @@ body {
 }
 .sidebar ul li a:hover, .sidebar ul .active a{
     color: #ecedee;
-    background-color: #354358;
+    background-color: #343a40;
 }
 .sidebar ul ul a{
     padding-left: 2.5rem;
-    background-color: #1e2835;
+    background-color: #343a40;
 }
 /*Seletor utilizado para ativar o botão ocultar menu em PC*/ 
 .sidebar.toggled{
@@ -50,7 +50,7 @@ body {
     right: 1rem;
 }
 .sidebar [aria-expanded="true"]{
-    background-color: #19222d;
+    background-color: #343a40;
 }
 .sidebar [aria-expanded="true"]:before{
     content: "\f0d8";
@@ -62,5 +62,5 @@ body {
     font-size: 2.0rem !important;
 }
 #navbar{
-    background-color:   #000000; 
+    background-color:   #343a40; 
 }
