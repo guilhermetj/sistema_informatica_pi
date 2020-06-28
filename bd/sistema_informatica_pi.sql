@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Jun-2020 às 23:35
+-- Tempo de geração: 28-Jun-2020 às 23:27
 -- Versão do servidor: 10.4.11-MariaDB
 -- versão do PHP: 7.4.6
 
@@ -53,8 +53,8 @@ CREATE TABLE `chamado` (
   `status` varchar(155) NOT NULL,
   `equipamento` varchar(115) NOT NULL,
   `descricao` varchar(155) NOT NULL,
-  `abertura` varchar(155) NOT NULL,
-  `encerramento` varchar(155) DEFAULT NULL
+  `abertura` datetime(6) NOT NULL,
+  `encerramento` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -62,17 +62,17 @@ CREATE TABLE `chamado` (
 --
 
 INSERT INTO `chamado` (`id`, `id_cliente`, `id_funcionario`, `status`, `equipamento`, `descricao`, `abertura`, `encerramento`) VALUES
-(28, 6, 20, 'Finalizado', 'dawdawdaw', '1231321 ', '2020-06-11 16:27:00', '2020-06-12 14:09:16'),
-(31, 6, 20, 'Finalizado', 'dawdawdaw', '21                ', '2020-06-12 13:03:21', '2020-06-12 21:21:08'),
-(34, 9, 20, 'Em andamento', 'dwadawd', '123123 ', '2020-06-12 13:37:34', NULL),
-(35, 6, 20, 'Em andamento', 'computador', 'teste               ', '2020-06-12 13:44:09', NULL),
-(36, 6, 20, 'Em andamento', 'computador', 'teste        ', '2020-06-12 13:44:23', NULL),
-(37, 6, 21, 'Finalizado', 'teste', 'teste                ', '2020-06-12 13:51:45', '2020-06-12 13:55:43'),
-(38, 6, 21, 'Finalizado', 'teste', 'teste                ', '2020-06-12 14:00:18', '2020-06-12 14:00:34'),
-(39, 6, 21, 'Finalizado', 'teste', 'teste                ', '2020-06-12 14:02:25', '2020-06-12 14:02:36'),
-(40, 6, 21, 'Em andamento', 'teste', '213132                ', '2020-06-12 14:07:57', NULL),
-(41, 6, 20, 'Finalizado', 'computador', 'o computador não liga            ', '2020-06-12 21:13:34', '2020-06-26 19:48:16'),
-(42, 6, NULL, 'Em espera', 'teste', 'teste                    ', '2020-06-27 13:31:49', NULL);
+(28, 6, 20, 'Finalizado', 'dawdawdaw', '1231321 ', '2020-06-11 16:27:00.000000', '2020-06-12 14:09:16.000000'),
+(31, 6, 20, 'Finalizado', 'dawdawdaw', '21                ', '2020-06-12 13:03:21.000000', '2020-06-12 21:21:08.000000'),
+(34, 9, 20, 'Em andamento', 'dwadawd', '123123 ', '2020-06-12 13:37:34.000000', NULL),
+(35, 6, 20, 'Em andamento', 'computador', 'teste               ', '2020-06-12 13:44:09.000000', NULL),
+(36, 6, 20, 'Em andamento', 'computador2', 'teste        ', '2020-06-12 13:44:23.000000', NULL),
+(37, 6, 21, 'Finalizado', 'teste', 'teste                ', '2020-06-12 13:51:45.000000', '2020-06-12 13:55:43.000000'),
+(38, 6, 21, 'Finalizado', 'teste', 'teste                ', '2020-06-12 14:00:18.000000', '2020-06-12 14:00:34.000000'),
+(39, 6, 21, 'Finalizado', 'teste', 'teste                ', '2020-06-12 14:02:25.000000', '2020-06-12 14:02:36.000000'),
+(40, 6, 21, 'Em andamento', 'teste', '213132                ', '2020-06-12 14:07:57.000000', NULL),
+(41, 6, 20, 'Finalizado', 'computador', 'o computador não liga            ', '2020-06-12 21:13:34.000000', '2020-06-26 19:48:16.000000'),
+(42, 6, NULL, 'Em espera', 'teste', 'teste                    ', '2020-06-27 13:31:49.000000', NULL);
 
 -- --------------------------------------------------------
 
@@ -89,7 +89,7 @@ CREATE TABLE `cliente` (
   `email` varchar(255) NOT NULL,
   `cep` int(50) NOT NULL,
   `endereco` varchar(150) NOT NULL,
-  `created` varchar(255) DEFAULT NULL
+  `created` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -97,12 +97,12 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id`, `nome`, `cpf`, `telefone`, `sexo`, `email`, `cep`, `endereco`, `created`) VALUES
-(6, 'Guilherme', 534456, 231321, '', 'dwaD@aswd', 231, 'teste dwadwad dw dwa', NULL),
-(7, 'dawdaw', 312321, 3213, 'dwad', 'ddawdwa@Dwad', 1231, 'ewae12321546', NULL),
-(9, 'dawdw', 321321, 3213, 'Masculino', 'lucas@email.com', 213, 'ewae12321546', '2020-05-14 17:46:21'),
-(10, 'dawdw', 321321, 3213, 'Masculino', 'lucas@email.com', 213, 'ewae12321546', '2020-05-14 17:47:27'),
-(15, 'Cleiton', 11111111, 211111111, 'Masculino', '1111111111', 1111111, '11111111111', '2020-06-05 20:55:52'),
-(16, 'joao', 111111111, 123244354, 'Masculino', 'teste@teste', 111111111, '111111111111', '2020-06-23 14:28:28');
+(6, 'Guilherme', 534456, 231321, '', 'dwaD@aswd', 231, 'teste dwadwad dw dwa', '2020-05-14 17:46:21.000000'),
+(7, 'dawdaw', 312321, 3213, 'dwad', 'ddawdwa@Dwad', 1231, 'ewae12321546', '2020-05-14 17:46:21.000000'),
+(9, 'dawdw', 321321, 3213, 'Masculino', 'lucas@email.com', 213, 'ewae12321546', '2020-05-14 17:46:21.000000'),
+(10, 'dawdw', 321321, 3213, 'Masculino', 'lucas@email.com', 213, 'ewae12321546', '2020-05-14 17:47:27.000000'),
+(15, 'Cleiton', 11111111, 211111111, 'Masculino', '1111111111', 1111111, '11111111111', '2020-06-05 20:55:52.000000'),
+(16, 'joao', 111111111, 123244354, 'Masculino', 'teste@teste', 111111111, '111111111111', '2020-06-23 14:28:28.000000');
 
 -- --------------------------------------------------------
 
@@ -195,7 +195,7 @@ CREATE TABLE `funcionario` (
   `sexo` varchar(30) NOT NULL,
   `senha` varchar(115) NOT NULL,
   `id_cargo` int(11) NOT NULL,
-  `created` varchar(255) DEFAULT NULL
+  `created` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -203,11 +203,11 @@ CREATE TABLE `funcionario` (
 --
 
 INSERT INTO `funcionario` (`id`, `nome`, `cpf`, `rg`, `nascimento`, `email`, `endereco`, `cep`, `estado`, `telefone`, `tituloEleitor`, `escolaridade`, `ctps`, `sexo`, `senha`, `id_cargo`, `created`) VALUES
-(20, 'cleiton', '1111111111', 111111111, '1256-12-05', 'cleiton@email.com', 'dwadw11d21', 111111, 'Espírito Santo', 211111221, '21313', 'MedioIncompleto', '2131231', 'Masculino', '1234', 8, '2020-06-11 15:47:47'),
-(21, 'Gisele', '11111111111111', 2147483647, '1188-12-15', 'gisele@email.com', '111111111111', 2147483647, 'Mato Grosso do Sul', 2147483647, '111111111111', 'MedioIncompleto', '11111111111111', 'Masculino', '1234', 9, '2020-06-12 13:51:26'),
-(22, 'admin', '11111111111', 111111111, '47577-05-04', '1111dwadaw1111111@dwad', 'jdoksaokdoaskdopa', 231321, 'Sergipe', 999898989, '1684896525', 'Fundamental Incompleto', 'dw31', 'Masculino', '312', 8, '2020-06-25 18:19:59'),
-(23, 'funcionario', '11111111', 1111111, '5115-12-15', 'funcionario@email', '1111111111111111', 1111111111, 'Alagoas', 4555555, '111111111', 'FundamentalCompleto', '111111111', 'Não informado', '1234', 9, '2020-06-26 16:23:22'),
-(24, 'teste', '11111111111111111', 2147483647, '0310-06-15', 'teste@teste', 'sdawdadwd', 2165156, 'Amapá', 1655461332, '151665', 'MedioIncompleto', '01261695', 'Masculino', '31543351', 9, '2020-06-27 16:09:39');
+(20, 'cleiton', '1111111111', 111111111, '1256-12-05', 'cleiton@email.com', 'dwadw11d21', 111111, 'Espírito Santo', 211111221, '21313', 'MedioIncompleto', '2131231', 'Masculino', '1234', 8, '2020-06-11 15:47:47.000000'),
+(21, 'Gisele', '11111111111111', 2147483647, '1188-12-15', 'gisele@email.com', '111111111111', 2147483647, 'Mato Grosso do Sul', 2147483647, '111111111111', 'MedioIncompleto', '11111111111111', 'Masculino', '1234', 9, '2020-06-12 13:51:26.000000'),
+(22, 'admin', '11111111111', 111111111, '47577-05-04', '1111dwadaw1111111@dwad', 'jdoksaokdoaskdopa', 231321, 'Sergipe', 999898989, '1684896525', 'Fundamental Incompleto', 'dw31', 'Masculino', '312', 8, '2020-06-25 18:19:59.000000'),
+(23, 'funcionario', '11111111', 1111111, '5115-12-15', 'funcionario@email', '1111111111111111', 1111111111, 'Alagoas', 4555555, '111111111', 'FundamentalCompleto', '111111111', 'Não informado', '1234', 9, '2020-06-26 16:23:22.000000'),
+(24, 'teste', '11111111111111111', 2147483647, '0310-06-15', 'teste@teste', 'sdawdadwd', 2165156, 'Amapá', 1655461332, '151665', 'MedioIncompleto', '01261695', 'Masculino', '31543351', 9, '2020-06-27 16:09:39.000000');
 
 -- --------------------------------------------------------
 
@@ -219,8 +219,8 @@ CREATE TABLE `historico_chamado` (
   `id` int(11) NOT NULL,
   `id_chamado` int(11) NOT NULL,
   `id_funcionario` int(11) NOT NULL,
-  `dt_historico` datetime NOT NULL,
-  `descricao` text NOT NULL,
+  `dt_historico` datetime(6) NOT NULL,
+  `descricao` varchar(255) NOT NULL,
   `solucao` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -229,11 +229,14 @@ CREATE TABLE `historico_chamado` (
 --
 
 INSERT INTO `historico_chamado` (`id`, `id_chamado`, `id_funcionario`, `dt_historico`, `descricao`, `solucao`) VALUES
-(4, 34, 20, '2020-06-16 20:29:32', 'dwad', 'dwad'),
-(5, 34, 20, '2020-06-16 20:31:32', 'teste', 'teste'),
-(6, 41, 21, '2020-06-25 18:38:57', 'teste', 'teste'),
-(7, 41, 20, '2020-06-25 19:00:50', '121', '3123'),
-(8, 35, 20, '2020-06-27 16:32:08', 'dwad', 'dwada2');
+(4, 34, 20, '2020-06-16 20:29:32.000000', '0000-00-00 00:00:00.000000', 'dwad'),
+(5, 34, 20, '2020-06-16 20:31:32.000000', '0000-00-00 00:00:00.000000', 'teste'),
+(6, 41, 21, '2020-06-25 18:38:57.000000', '0000-00-00 00:00:00.000000', 'teste'),
+(7, 41, 20, '2020-06-25 19:00:50.000000', '0000-00-00 00:00:00.000000', '3123'),
+(8, 35, 20, '2020-06-27 16:32:08.000000', '0000-00-00 00:00:00.000000', 'dwada2'),
+(9, 28, 20, '2020-06-23 16:59:36.000000', '0000-00-00 00:00:00.000000', 'teste'),
+(10, 36, 20, '2020-06-28 17:48:18.000000', '0000-00-00 00:00:00.000000', 'dwad2'),
+(11, 34, 20, '2020-06-28 18:13:02.000000', '0000-00-00 00:00:00.000000', 'teste');
 
 -- --------------------------------------------------------
 
@@ -369,7 +372,7 @@ ALTER TABLE `funcionario`
 -- AUTO_INCREMENT de tabela `historico_chamado`
 --
 ALTER TABLE `historico_chamado`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `permissoes`
