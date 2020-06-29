@@ -13,6 +13,7 @@ require 'classes/Funcionario.php';
 require 'classes/FuncionarioDAO.php';
 $funcionarioDAO = new FuncionarioDAO();
 $funcionarios = $funcionarioDAO->listarfuncionarios();
+
 /*var_dump($total_chamado_finalizado);exit;*/
 //primeiro grafico
 $grafico_total_chamados = json_encode($relatorioDAO->contarChamadoAndamento());

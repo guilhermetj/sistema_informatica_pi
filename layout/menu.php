@@ -74,6 +74,7 @@
             <li><a href="form_permissao.php"><i class="fas fa-plus-circle"></i> Cadastrar</a></li>
           </ul>
         </li><br><br>
+        <?php endif; ?>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
           <a class="nav-link" href="logout.php" data-toggle="modal" data-target="#logout">
             <i class="fa fa-fw fa-sign-out"></i>
@@ -93,7 +94,6 @@
           <a class="nav-link" data-toggle="modal" href="logout.php" data-target="#logout">
             <i class="fa fa-fw fa-sign-out"></i>Sair</a>
         </li>
-        <?php endif; ?>
       </ul>
     </div>
   </nav>
