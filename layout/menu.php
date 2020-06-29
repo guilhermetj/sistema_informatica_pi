@@ -75,12 +75,6 @@
           </ul>
         </li><br><br>
         <?php endif; ?>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-          <a class="nav-link" href="logout.php" data-toggle="modal" data-target="#logout">
-            <i class="fa fa-fw fa-sign-out"></i>
-            <span class="nav-link-text">Sair</span>
-          </a>
-        </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">

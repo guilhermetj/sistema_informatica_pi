@@ -61,12 +61,21 @@ class ChamadoDAO extends Model
         $stmt->execute();
         return $stmt->fetchAll();
     }
-        public function listarTodos($funcionario)
+        public function listarTodos($pesquisa = '')
     {
+        if($pesquisa != '') {
         $sql = "SELECT ch.*, cl.nome AS nome_cliente, fn.nome AS nome_funcionario FROM {$this->tabela} ch 
         LEFT JOIN cliente cl ON cl.id = ch.id_cliente
         LEFT JOIN funcionario fn ON fn.id = ch.id_funcionario
+        WHERE cl.nome LIKE '%{$pesquisa}%'
+         OR fn.nome LIKE '%{$pesquisa}%'
+         OR status LIKE '%{$pesquisa}%'";
+        } else {
+            $sql = "SELECT ch.*, cl.nome AS nome_cliente, fn.nome AS nome_funcionario FROM {$this->tabela} ch 
+        LEFT JOIN cliente cl ON cl.id = ch.id_cliente
+        LEFT JOIN funcionario fn ON fn.id = ch.id_funcionario
         ORDER BY ch.status DESC";
+        }
         /*var_dump($sql);exit;*/
         $stmt = $this->db->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_CLASS, $this->class);

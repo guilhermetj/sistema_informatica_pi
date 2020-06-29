@@ -4,7 +4,7 @@ class Conn {
     
     public static $Host = "localhost";
     public static $User = "root";
-    public static $Pass = "microsol45";
+    public static $Pass = "";
     public static $Dbname = "sistema_informatica_pi";
     private static $Connect = null;
     

@@ -20,6 +20,11 @@
   <div class="main">
     <div class="col-md-6 col-sm-12" style="margin-left: 205px;">
       <div class="login-form" style="margin-top: 45%;">
+            <?php
+            if (isset($_GET['msg']) && $_GET['msg'] != '') {
+              echo '<div class="alert alert-danger" id="msg">' . $_GET['msg'] . '</div>';
+            }
+            ?>
         <form>
           <div class="form-group">
             <label>Email</label>
@@ -28,11 +33,6 @@
           <div class="form-group">
             <label>Senha</label>
             <input type="password" name="senha" class="form-control" placeholder="Senha">
-            <?php
-            if (isset($_GET['msg']) && $_GET['msg'] != '') {
-              echo '<div class="alert alert-danger" id="msg">' . $_GET['msg'] . '</div>';
-            }
-            ?>
           </div>
           <button type="submit" class="btn btn-primary">Entrar</button>
         </form>

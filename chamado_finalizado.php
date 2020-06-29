@@ -34,7 +34,7 @@ $chamados = $chamadoDAO->listarFinalizado($funcionario);
 						<td><?= $chamado->getEncerramento() ?></td>
 						<td>
 						<a class="btn btn-primary" href="visualizar_chamadoFinalizado.php?id=<?= $chamado->getId() ?>"><i class="fa fa-eye"></i></a>
-						<a href="pdf_chamado_finalizado.php?id=<?= $chamado->getId() ?>" class="btn btn-success"><i class="fas fa-file-pdf"></i></a>
+
 						</td>
 					</tr>
 				<?php } ?>

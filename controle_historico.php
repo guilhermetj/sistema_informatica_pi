@@ -36,4 +36,4 @@ $historicoChamadoDAO->inserehistoricoChamado($historicoChamado);
 function deletar($historicoChamadoDAO, $id){
 	 $historicoChamadoDAO->deletar($id);
 }
-header("Location: form_chamado.php?msg=$msg");
+header("Location: chamado_andamento.php?msg=$msg");

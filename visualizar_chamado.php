@@ -20,9 +20,6 @@
 <div class="content-wrapper">
   	<div class="container-fluid" style="margin-top: 30px;">
 	  	<div class="card text-center">
-			<div class="card-header">
-				Em andamento
-			</div>
 			<div class="card-body">
 				<h5 class="card-title">Chamado n° <?php echo $chamado->getId() ?></h5><br>
 				<div class="d_flex">
