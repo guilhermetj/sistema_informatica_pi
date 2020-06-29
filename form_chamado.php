@@ -46,7 +46,7 @@
     </div>
     <br>
     <div class="row">
-    <div class=" col-md-4" style="margin-left: 370px;">
+    <div class=" col-md-4 <?php echo (!isset($_GET['id']) && $_GET['id'] == '' ? 'offset-4' : '') ?>">
       <form action="controle_chamado.php?acao=<?= ($chamado->getId() != '' ? 'editar' : 'cadastrar') ?>" method="post">
         <div class="form-group">
           <input type="hidden" name="id" class="form-control" id="id" value="<?=($chamado->getId() != '' ? $chamado->getId(): '')?>">
@@ -77,16 +77,16 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="exampleFormControlTextarea1">Descição</label>
+          <label for="exampleFormControlTextarea1">Descrição</label>
           <textarea class="form-control" rows="5" id="exampleFormControlTextarea1" name="descricao" style="resize: none;"><?= ($chamado->getDescricao() != '' ? $chamado->getDescricao() : '') ?></textarea>
         </div>
           <button type="submit" class="btn btn-success" style="width: 100%;">Salvar</button>
       </form>
     </div>  
   <?php if (isset($_GET['id']) && $_GET['id'] != '') { ?>
-    <div class="chamado">
-      <div class="card" style="position: fixed; width: 20%; margin-left: 40px;">
+    <div class="col-md-4">
         <?php foreach ($historicoChamados as $historicoChamado) { ?>
+      <div class="card" >
         <div class="card-header">
           Data: <?= $historicoChamado->getDtHistorico() ?>
         </div>

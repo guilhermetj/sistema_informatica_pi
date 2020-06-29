@@ -5,8 +5,6 @@ require 'classes/Chamado.php';
 require 'classes/ChamadoDAO.php';
 $chamadoDAO = new ChamadoDAO();
 $chamados = $chamadoDAO->listarEspera();
-$funcionario = $_SESSION['id_funcionario'];
-$chamados = $chamadoDAO->listarTodos($funcionario);
 
 ?>
 
