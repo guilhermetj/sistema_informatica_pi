@@ -10,7 +10,7 @@ $Permissoes = $permissaoDAO->listarPermissao();
 
 
 <div class="content-wrapper">
-  	<div class="container-fluid" style="margin-top: 30px; margin-bottom: 150px;">
+  	<div class="container-fluid" style="margin-top: 30px; margin-bottom: 130px;">
 	  	<div class="h3topo" style="text-align: center; margin-bottom: 40px;">
 			<h3>Lista de Permissões</h3>
     	</div>
@@ -25,7 +25,6 @@ $Permissoes = $permissaoDAO->listarPermissao();
 					<th>Cadastrar</th>
 					<th>Deletar</th>
 					<th>Ação</th>
-
 				</tr>
 			</thead>
 			<tbody>

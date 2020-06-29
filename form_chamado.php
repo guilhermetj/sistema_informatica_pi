@@ -32,11 +32,11 @@
 
 ?>
 
-<style>
+<!-- <style>
   .d_flex {
     margin: 0 400px 0 400px;
   }
-</style>
+</style> -->
 
 <div class="content-wrapper">
   <div class="container-fluid" style="margin-top: 30px;">
@@ -46,7 +46,7 @@
     </div>
     <br>
     <div class="row">
-    <div class=" col-md-6 <?php echo (!isset($_GET['id']) && $_GET['id'] == '' ? 'offset-4' : '') ?>">
+    <div class=" col-md-4" style="margin-left: 370px;">
       <form action="controle_chamado.php?acao=<?= ($chamado->getId() != '' ? 'editar' : 'cadastrar') ?>" method="post">
         <div class="form-group">
           <input type="hidden" name="id" class="form-control" id="id" value="<?=($chamado->getId() != '' ? $chamado->getId(): '')?>">
@@ -82,30 +82,32 @@
         </div>
           <button type="submit" class="btn btn-success" style="width: 100%;">Salvar</button>
       </form>
-    </div>
-<?php if (isset($_GET['id']) && $_GET['id'] != '') { ?>
-<div class="col-md-6">
-      <?php foreach ($historicoChamados as $historicoChamado) { ?>
-        <div class="card" style="margin-bottom: 15px; width: 98%;">
-          <div class="card-header">
+    </div>  
+  <?php if (isset($_GET['id']) && $_GET['id'] != '') { ?>
+    <div class="chamado">
+      <div class="card" style="position: fixed; width: 20%; margin-left: 40px;">
+        <?php foreach ($historicoChamados as $historicoChamado) { ?>
+        <div class="card-header">
           Data: <?= $historicoChamado->getDtHistorico() ?>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Funcionário: <?= $historicoChamado->nome; ?></h5>
-            <p class="card-text">Informações do chamado</p>
-            <ul class="list-group">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Histórico do chamado</h5>
+          <label>Funcionário: <strong><?= $historicoChamado->nome; ?></strong></label>
+            <ul class="list-group list-group-flush">
               <li class="list-group-item">Descrição: <?= $historicoChamado->getDescricao() ?></li>
               <li class="list-group-item">Solução: <?= $historicoChamado->getSolucao() ?></li>
-            </ul>
+            </ul><br>
+            <div style="text-align: center;">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registroHistorico">Registrar Histórico</button>
+            </div>
           </div>
-        </div>
-      <?php } ?>
-    <div style="text-align: center;">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registroHistorico" style="margin-bottom: 80px;">Registrar Historico</button></div>
-  </div>
+        <?php } ?>
+      </div>
+    </div>
+  <?php } ?>
 </div>
 </div>
-<?php } ?>
+
         
 <?php include './layout/footer.php'; ?>
 

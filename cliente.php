@@ -13,7 +13,7 @@ $clientes = $clienteDAO->listar();
 
 
 <div class="content-wrapper">
-  	<div class="container-fluid" style="margin-top: 30px;">
+  	<div class="container-fluid" style="margin-top: 30px; margin-bottom: 130px;">
 	  	<div class="h3topo" style="text-align: center; margin-bottom: 40px;">
 			<h3>Formulário de clientes</h3>
     	</div>

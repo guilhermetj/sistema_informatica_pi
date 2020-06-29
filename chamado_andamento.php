@@ -38,7 +38,7 @@ $chamados = $chamadoDAO->listarAndamento($funcionario);
 					<td>
 						<a class="btn btn-warning" style="padding-right: 8px;" href="form_chamado.php?id=<?= $chamado->getId() ?>"><i class="far fa-edit"></i></a>
 						<a class="btn btn-danger" href="controle_chamado.php?acao=finalizarChamado&id=<?= $chamado->getId() ?>" onclick="return confirm('Deseja realmente Finalizar esse chamado?')"><i class="far fa-check-square"></i></a>
-						<a target="__blank" href="pdf_chamado_andamento.php?id=<?= $chamado->getId() ?>" class="btn btn-primary"><i class="fas fa-file-pdf"></i></a>
+						<a target="__blank" href="pdf_chamado_andamento.php?id=<?= $chamado->getId() ?>" class="btn btn-success"><i class="fas fa-file-pdf"></i></a>
 					</td>
 				</tr>
 			<?php } ?>
