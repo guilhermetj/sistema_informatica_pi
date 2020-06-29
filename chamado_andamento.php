@@ -12,7 +12,7 @@ $chamados = $chamadoDAO->listarAndamento($funcionario);
 <div class="content-wrapper">
   <div class="container-fluid" style="margin-top: 30px;">
   	<div class="h3topo" style="text-align: center;">
-    	<h3>Chamados em espera</h3>
+    	<h3>Chamados em andamento</h3>
     </div><br>
   	<table class="table text-center">
 		<thead>
