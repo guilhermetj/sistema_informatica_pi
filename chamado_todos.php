@@ -30,7 +30,7 @@ $historicoChamadoDAO = new HistoricoChamadoDAO();
 					$historicoChamados = $historicoChamadoDAO->getHistorico($chamado->getid());
 
 				?>
-					<div class="col-sm-6">
+					<div class="col-sm-6" style="padding-bottom: 15px;">
 
 						<div class="card">
 							<div class="card-body">
