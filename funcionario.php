@@ -37,12 +37,13 @@ $funcionarios = $funcionarioDAO->listarfuncionarios();
 							<?php if($permissoes['editar']): ?>
 							<a class="btn btn-warning" style="padding-right: 8px;" href="form_funcionario.php?id=<?= $funcionario->getId() ?>"><i class="far fa-edit"></i></a>
 							<?php endif; ?>
-							<?php if($permissoes['deletar']): ?>
-							<a class="btn btn-danger" href="controle_funcionario.php?acao=deletar&id=<?= $funcionario->getId() ?>" onclick="return confirm('Deseja realmente excluir?')"><i class="fas fa-trash"></i></a>
-							<?php endif; ?>
 							<?php if($permissoes['ler']): ?>
 							<a class="btn btn-primary" href="visualizar_funcionario.php?id=<?= $funcionario->getId() ?>"><i class="fa fa-eye"></i></a>
 							<?php endif; ?>
+							<?php if($permissoes['deletar']): ?>
+							<a class="btn btn-danger" href="controle_funcionario.php?acao=deletar&id=<?= $funcionario->getId() ?>" onclick="return confirm('Deseja realmente excluir?')"><i class="fas fa-trash"></i></a>
+							<?php endif; ?>
+
 						</td>
 					</tr>
 				<?php } ?>

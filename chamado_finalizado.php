@@ -31,7 +31,7 @@ $chamados = $chamadoDAO->listarFinalizado($funcionario);
 						<td><?= $chamado->nome_cliente; ?></td>
 						<td><?= $chamado->getStatus() ?></td>
 						<td><?= $chamado->getEquipamento() ?></td>
-						<td><?= $chamado->getEncerramento() ?></td>
+						<td><?= date('d/m/Y', strtotime($chamado->getEncerramento()));?></td>
 						<td>
 						<a class="btn btn-primary" href="visualizar_chamadoFinalizado.php?id=<?= $chamado->getId() ?>"><i class="fa fa-eye"></i></a>
 

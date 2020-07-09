@@ -63,7 +63,7 @@ $historicoChamadoDAO = new HistoricoChamadoDAO();
 									<td><?= $chamado->nome_funcionario; ?></td>
 									<td><?= $chamado->getStatus() ?></td>
 									<td><?= $chamado->getEquipamento() ?></td>
-									<td><?= $chamado->getAbertura() ?></td>
+									<td><?= date('d/m/Y H:i:s', strtotime($chamado->getAbertura())); ?></td>
 									<td><?= $chamado->getEncerramento() ?></td>
 									<td>
 									<a target="__blank" href="pdf_chamado_finalizado.php?id=<?= $chamado->getId() ?>" class="btn btn-success"><i class="fas fa-file-pdf"></i></a>

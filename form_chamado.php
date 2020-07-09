@@ -34,7 +34,7 @@
 
 
 <div class="content-wrapper">
-  <div class="container-fluid" style="margin-top: 30px;">
+  <div class="container-fluid" >
     <div class="h3topo" style="text-align: center;">
         <h3>Formulário de Tickets</h3>
         <spam>Preencha todos os campos abaixo</spam>
@@ -102,42 +102,6 @@
   
 </div>
 </div>
-
-        
+       
 <?php include './layout/footer.php'; ?>
 
-<div class="modal fade" id="registroHistorico" tabindex="-1" role="dialog" aria-labelledby="TituloregistroHistorico" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="d_flex">
-        <div class="col">
-          <form action="controle_historico.php?acao=cadastrar" method="post" style="text-align: center;">
-              <div class="form-group" style="padding-left: 65px;">
-                <input type="hidden" name="id_chamado" class="form-control" id="id" value="<?=($chamado->getId() != '' ? $chamado->getId(): '')?>">
-              </div>
-            <div class="form-group" style="padding-left: 65px;">
-              <label style="margin-right: 70px;">Funcionário:</label>
-              <select class="custom-select" name="id_funcionario"id="id_funcionario" style="width: 340px; margin-right: 60px;">
-                <?php foreach($funcionarios as $funcionario){ ?>
-                  <option value="<?= $funcionario->getID() ?>"><?= $funcionario->getNome() ?></option>
-                <?php } ?>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Descrição</label>
-              <textarea class="form-control" cols="10" rows="5" charswidth="23" name="descricao" style="resize: none; width: 340px; margin-left: 65px;"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Solução</label>
-              <textarea class="form-control" cols="10" rows="5" charswidth="23" name="solucao" style="resize: none; width: 340px; margin-left: 65px;"></textarea>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-              <button type="submit" class="btn btn-primary">Salvar mudanças</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

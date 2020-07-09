@@ -148,7 +148,7 @@ $grafico_cliente_mes = ($relatorioDAO->contarMesCliente());
                     <div class="media">
                       <img class="d-flex mr-3 rounded-circle" style="width: 15%;" src="assets/img/user.png" alt="">
                       <div class="media-body">
-                        <strong><?= $funcionario->getNome() ?> </strong> Atualmente está oculpando o cargo de <?= $funcionario->nome_cargo; ?>.
+                        <strong><?= $funcionario->getNome() ?> </strong> Atualmente está ocupando o cargo de <?= $funcionario->nome_cargo; ?>.
                         <div class="text-muted smaller">última atualização hoje as 18:40</div>
                       </div>
                     </div>
