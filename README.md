@@ -1,5 +1,5 @@
-Sistema de gerenciamento de chamados para uma empresa de informática 
-Tecnologias utilizadas: Php OO, MySql, PDO, Javascript, Html, CSS.
+<p>Sistema de gerenciamento de chamados para uma empresa de informática</p>
+<p>Tecnologias utilizadas: Php OO, MySql, PDO, Javascript, Html, CSS.</p>
 
 
 <table>
